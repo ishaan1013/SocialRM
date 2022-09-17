@@ -3,7 +3,6 @@ import { FaChevronLeft, FaTrash } from "react-icons/fa";
 import { Listbox, Transition } from "@headlessui/react";
 import { HiSelector } from "react-icons/hi";
 import coGenerate from "../../pages/api/cohere";
-
 interface Props {
   username: string;
   contact: any;
@@ -52,6 +51,11 @@ const View: React.FC<Props> = ({ username, contact, setIsOpen }) => {
             Next
           </button>
         </div>
+        <button
+          onClick={() => {
+            console.log("Send email");
+          }}
+        ></button>
       </div>
     </>
   );
