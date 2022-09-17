@@ -6,12 +6,12 @@ import coGenerate from "../../pages/api/cohere";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { deleteOld } from "../../utils/updatedb";
 interface Props {
-  username: string;
+  user: any;
   contact: any;
   setIsOpen: (val: boolean) => void;
 }
 
-const View: React.FC<Props> = ({ username, contact, setIsOpen }) => {
+const View: React.FC<Props> = ({ user, contact, setIsOpen }) => {
   const [results, setResults] = useState([]);
   const [currentMessage, setCurrentMessage] = useState(0);
   const { width } = useWindowDimensions();
@@ -24,11 +24,14 @@ const View: React.FC<Props> = ({ username, contact, setIsOpen }) => {
   };
 
   useEffect(() => {
-    coGenerate(username, contact.name, contact.tone, contact.intention).then(
-      (res: any) => {
-        setResults(res);
-      }
-    );
+    coGenerate(
+      user.displayName,
+      contact.name,
+      contact.tone,
+      contact.intention
+    ).then((res: any) => {
+      setResults(res);
+    });
   }, []);
   return (
     <>
@@ -43,7 +46,7 @@ const View: React.FC<Props> = ({ username, contact, setIsOpen }) => {
           className="absolute top-6 right-6"
           onClick={() => {
             setIsOpen(false);
-            deleteOld(username, contact.email);
+            deleteOld(user, contact.email);
           }}
         >
           <FaTrash className="w-9 h-9 p-2.5 rounded-md bg-red-100 hover:bg-red-200/70 duration-200 text-red-500" />

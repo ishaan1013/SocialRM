@@ -46,11 +46,7 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
       <Nav user={user} auth={auth} />
       {isCreating && <New setIsOpen={setIsCreating} user={user} />}
       {isViewing && (
-        <View
-          username={user.displayName}
-          contact={currentContact}
-          setIsOpen={setIsViewing}
-        />
+        <View user={user} contact={currentContact} setIsOpen={setIsViewing} />
       )}
       <main className="p-6 flex flex-col justify-start items-center md:pl-[22rem] sm:pt-8 md:pt-12">
         <div className="fixed bottom-0 opacity-20">
