@@ -1,26 +1,19 @@
 import { useState, useEffect } from "react";
 import coGenerate from "../../pages/api/cohere";
-import { greetings } from "../../data/data";
 
 interface Props {
-  category: any;
-  name: any;
-  style: any;
+  username: string;
+  category: string;
+  name: string;
+  tone: string;
 }
 
-const INFORMAL = "46441c5a-7452-4a9d-9bc4-8a9481c924e2-ft";
-const FORMAL = "5fd2c674-a202-4364-ba1d-7a89fc420f1f-ft";
-
-const Send: React.FC<Props> = ({ category, name, style }) => {
+const Send: React.FC<Props> = ({ username, category, name, tone }) => {
   const [results, setResults] = useState([]);
   const [currentMessage, setCurrentMessage] = useState(0);
-  const [messageStyle, setMessageStyle] = useState(style);
 
   useEffect(() => {
-    coGenerate(
-      "Hello Ryan!",
-      messageStyle === "informal" ? INFORMAL : FORMAL
-    ).then((res: any) => {
+    coGenerate(username, name, tone).then((res: any) => {
       setResults(res);
     });
   }, []);
@@ -33,7 +26,11 @@ const Send: React.FC<Props> = ({ category, name, style }) => {
       </div>
       <div>
         <textarea value={results[currentMessage]}></textarea>
-        <button onClick={() => setCurrentMessage((currentMessage + 1) % 5)}>
+        <button
+          onClick={() =>
+            setCurrentMessage((currentMessage + 1) % results.length)
+          }
+        >
           Next
         </button>
       </div>
