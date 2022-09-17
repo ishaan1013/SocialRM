@@ -11,7 +11,6 @@ import View from "./view";
 const circles = ["Friends", "Family", "Acquaintances", "Coworkers"];
 interface Props {
   auth: any;
-  signOut: any;
   user: any;
 }
 

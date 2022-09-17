@@ -4,10 +4,18 @@ import { useEffect, useState } from 'react'
 
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth"
-import { firebaseConfig } from '../utils/firebase'
+import { firebaseConfig, db } from '../utils/firebase'
 
 import Account from '../components/account'
 import Dashboard from '../components/dashboard';
+
+export const signOutFunc = (auth:any) => {
+  signOut(auth).then(() => {
+    console.log("signed out")
+  }).catch((error) => {
+    console.log("error")
+  });
+}
 
 const Home: NextPage = () => {
 
@@ -45,14 +53,6 @@ const Home: NextPage = () => {
     });
   }
 
-  const signOutFunc = () => {
-    signOut(auth).then(() => {
-      console.log("signed out")
-    }).catch((error) => {
-      console.log("error")
-    });
-  }
-
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -73,7 +73,7 @@ const Home: NextPage = () => {
       </Head>
 
       {user ? 
-      <Dashboard auth={auth} signOut={signOutFunc} user={user} />
+      <Dashboard auth={auth} user={user} />
       : 
       <Account signIn={signIn} />
       }
