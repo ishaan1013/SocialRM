@@ -1,10 +1,12 @@
 import coGenerate from "../../pages/api/cohere";
 import { Disclosure } from "@headlessui/react";
+import { collection, doc, onSnapshot, query } from "firebase/firestore";
+import { db } from "../../utils/firebase";
 
 import Nav from "../nav";
 import { FaChevronUp, FaPlus } from "react-icons/fa";
 import New from "./new";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Contact from "./contact";
 import View from "./view";
 
@@ -18,8 +20,24 @@ interface Props {
 const Dashboard: React.FC<Props> = ({ auth, user }) => {
   const [isCreating, setIsCreating] = useState(false);
   const [isViewing, setIsViewing] = useState(false);
-  const [contacts, setContacts] = useState<any[][]>([[], [], [], []]);
+  const [contacts, setContacts] = useState<any>([[], [], [], []]);
   const [currentContact, setCurrentContact] = useState({});
+
+  
+  useEffect(() => {
+    const unsub = onSnapshot(query(collection(db, "users", user.email, "contacts")), (querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+          // newContacts.push(doc.data())
+          let newContacts = [...contacts]
+          const index = circles.indexOf(doc.data().circle)
+          console.log("newContacts:", newContacts)
+          newContacts[index].push(doc.data())
+          setContacts(newContacts)
+  
+      })
+      console.log("contacts:", contacts)
+    })
+  }, []);
 
   return (
     <>
@@ -27,8 +45,6 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
       {isCreating && (
         <New
           setIsOpen={setIsCreating}
-          contacts={contacts}
-          setContacts={setContacts}
           user={user}
         />
       )}
@@ -65,7 +81,7 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
                   />
                 </Disclosure.Button>
                 <Disclosure.Panel className="pt-4 pb-2">
-                  {contacts[i].map((contact) => (
+                  {contacts[i].filter((item, index) => index < Math.ceil(contacts[i].length / 2)).map((contact) => (
                     <Contact
                       contact={contact}
                       setViewing={setIsViewing}
@@ -75,7 +91,7 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
                       key={contact.name}
                     />
                   ))}
-                  <div className="w-full h-[1px] bg-slate-200 mt-6" />
+                  <div className="w-full h-[1px] bg-slate-200 mt-4" />
                 </Disclosure.Panel>
               </>
             )}

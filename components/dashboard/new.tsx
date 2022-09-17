@@ -6,12 +6,10 @@ import addNew from "../../utils/addNew";
 
 interface Props {
   setIsOpen: (val: boolean) => void;
-  contacts: any;
-  setContacts: (val: any) => void;
   user: any;
 }
 
-const New: React.FC<Props> = ({ setIsOpen, contacts, setContacts, user }) => {
+const New: React.FC<Props> = ({ setIsOpen, user }) => {
   const circles = [
     { circle: "Friends" },
     { circle: "Family" },
@@ -235,19 +233,6 @@ const New: React.FC<Props> = ({ setIsOpen, contacts, setContacts, user }) => {
           <button
             onClick={() => {
               if (validateForm()) {
-                contacts[
-                  ["Friends", "Family", "Acquaintances", "Colleagues"].indexOf(
-                    selectedCircle.circle
-                  )
-                ].push({
-                  name: name,
-                  email: email,
-                  circle: selectedCircle.circle,
-                  tone: selectedTone.tone,
-                  freq: selectedFreq.freq,
-                });
-                setIsOpen(false);
-                setContacts(contacts);
                 addNew(
                   user,
                   name,
@@ -255,7 +240,9 @@ const New: React.FC<Props> = ({ setIsOpen, contacts, setContacts, user }) => {
                   selectedCircle.circle,
                   selectedTone.tone,
                   selectedFreq.freq
-                );
+                )
+
+                setIsOpen(false);
               }
             }}
             className="col-span-2 mt-3 flex items-center justify-center w-full p-2 duration-200 bg-purple-600 rounded-lg hover:bg-purple-600/80 mb-4 font-bold text-white text-center"

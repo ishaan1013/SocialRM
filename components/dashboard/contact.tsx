@@ -2,7 +2,6 @@ import { ProcessOptions } from "postcss";
 import { FaTrash } from "react-icons/fa";
 import { TbDots } from "react-icons/tb";
 
-const circles = ["Friends", "Family", "Acquaintances", "Colleagues"];
 interface Props {
   contact: any;
   setViewing: (val: boolean) => void;
@@ -15,11 +14,9 @@ const Contact: React.FC<Props> = ({
   contact,
   setViewing,
   setCurrentContact,
-  contacts,
-  setContacts,
 }) => {
   return (
-    <div className="flex items-center justify-between h-full p-2 rounded-lg bg-transparent border-2 border-slate-300">
+    <div className="mb-2 flex items-center justify-between h-full p-2 rounded-lg bg-transparent border-2 border-slate-300">
       <h1 className="text-sm font-semibold text-slate-500">{contact.name}</h1>
       <div className="flex items-center">
         <button
@@ -32,11 +29,7 @@ const Contact: React.FC<Props> = ({
         </button>
         <button
           onClick={() => {
-            contacts[circles.indexOf(contact.circle)].splice(
-              contacts.indexOf(contact),
-              1
-            );
-            setContacts([...contacts]);
+            
           }}
         >
           <FaTrash className="text-red-500 h-7 w-7 p-2 rounded-md bg-red-100 duration-200 hover:bg-red-200/80" />
