@@ -1,4 +1,4 @@
-const apiKey = "RpBAWJkgiugEpfLZzEbVOUnB0XJXAkc71B8DbGui";
+import { apiKey } from "../../apiKey.js";
 
 const cohere = require("cohere-ai");
 cohere.init(apiKey, "2021-11-08");

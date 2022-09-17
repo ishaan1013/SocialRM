@@ -1,4 +1,5 @@
 import { getAuth, signOut } from "firebase/auth";
+import coGenerate from "../../pages/api/cohere";
 
 import Nav from "../nav";
 
@@ -8,6 +9,7 @@ interface Props {
 }
 
 const Dashboard: React.FC<Props> = ({ auth, signOut }) => {
+  coGenerate("Once upon a time there was a");
   return (
     <>
       <Nav />
@@ -23,3 +25,5 @@ const Dashboard: React.FC<Props> = ({ auth, signOut }) => {
     </>
   );
 };
+
+export default Dashboard;
