@@ -4,6 +4,7 @@ import { Disclosure } from "@headlessui/react"
 import Nav from "../nav";
 import { FaChevronUp, FaPlus } from "react-icons/fa";
 import New from "./new";
+import { useState } from "react";
 
 interface Props {
   auth: any
@@ -13,15 +14,18 @@ interface Props {
 
 const Dashboard: React.FC<Props> = ({ auth, signOut, user }) => {
 
+  const [isCreating, setIsCreating] = useState(false)
+
   return (
     <>
       <Nav user={user} signOut={signOut} />
-      <New />
+      {isCreating && <New setIsOpen={setIsCreating} /> }
       <main className="p-4">
         <h1 className="w-full text-center mb-6 text-lg font-bold text-slate-700">Your Circles</h1>
 
         <button 
         className="flex items-center justify-center w-full p-2 duration-200 bg-purple-600 rounded-lg hover:bg-purple-600/80 mb-4 font-bold text-white text-center"
+        onClick={() => setIsCreating(true)}
         >
           <FaPlus className="w-4 h-4 mr-2" />
           Create Contact
