@@ -38,7 +38,7 @@ const Schedule: NextPage = () => {
 
         <Nav user={user} auth={auth} />
 
-        <div>yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeessir</div>
+        <main className="p-4">yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeessir</main>
 
 
 

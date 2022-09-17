@@ -23,7 +23,7 @@ const Nav:React.FC<Props> = ({user, auth}) => {
                 <button
                 onClick={() => setIsOpen(true)}
                 >
-                    <IoMenu className="w-6 h-6" />
+                    <IoMenu className="w-9 h-9 p-2 rounded-lg bg-purple-200 hover:bg-purple-300/80 duration-200 text-slate-700" />
                 </button>
             </div>
             {isOpen && 
