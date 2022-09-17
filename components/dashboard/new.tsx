@@ -33,6 +33,25 @@ const New: React.FC<Props> = ({ setIsOpen, contacts, setContacts }) => {
   const [selectedTone, setSelectedTone] = useState(tones[0]);
   const [selectedFreq, setSelectedFreq] = useState(freqs[0]);
 
+  const [invalid, setInvalid] = useState(false);
+  const [emailInvalid, setEmailInvalid] = useState(false);
+
+  const validateForm = () => {
+    const emptyTest = name === "" || email === "";
+    if (emptyTest) {
+      setInvalid(true);
+    } else {
+      setInvalid(false);
+    }
+    const emailTest = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
+    if (!emailTest) {
+      setEmailInvalid(true);
+    } else {
+      setEmailInvalid(false);
+    }
+    return !emptyTest && emailTest;
+  };
+
   return (
     <>
       <div className="h-screen w-screen fixed top-0 left-0 flex flex-col items-center justify-start pt-20 px-6 bg-[#f6f6fd]/70 backdrop-blur-lg z-50">
@@ -228,25 +247,37 @@ const New: React.FC<Props> = ({ setIsOpen, contacts, setContacts }) => {
 
           <button
             onClick={() => {
-              contacts[
-                ["Friends", "Family", "Acquaintances", "Colleagues"].indexOf(
-                  selectedCircle.circle
-                )
-              ].push({
-                name: name,
-                email: email,
-                circle: selectedCircle.circle,
-                tone: selectedTone.tone,
-                freq: selectedFreq.freq,
-              });
-              setIsOpen(false);
-              setContacts(contacts);
+              if (validateForm()) {
+                contacts[
+                  ["Friends", "Family", "Acquaintances", "Colleagues"].indexOf(
+                    selectedCircle.circle
+                  )
+                ].push({
+                  name: name,
+                  email: email,
+                  circle: selectedCircle.circle,
+                  tone: selectedTone.tone,
+                  freq: selectedFreq.freq,
+                });
+                setIsOpen(false);
+                setContacts(contacts);
+              }
             }}
             className="col-span-2 mt-3 flex items-center justify-center w-full p-2 duration-200 bg-purple-600 rounded-lg hover:bg-purple-600/80 mb-4 font-bold text-white text-center"
           >
             <FaPlus className="w-4 h-4 mr-2" />
             Create Contact
           </button>
+          {invalid && (
+            <p className="col-span-2 mt-3 w-full text-center p-2 font-bold text-red-500">
+              Please fill out all the fields.
+            </p>
+          )}
+          {emailInvalid && (
+            <p className="col-span-2 mt-3 w-full text-center p-2 font-bold text-red-500">
+              Please enter a valid email.
+            </p>
+          )}
         </div>
       </div>
     </>
