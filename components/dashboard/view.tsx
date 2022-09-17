@@ -4,7 +4,7 @@ import { Listbox, Transition } from "@headlessui/react";
 import { HiSelector } from "react-icons/hi";
 import coGenerate from "../../pages/api/cohere";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
-import { deleteOld } from "../../utils/updatedb";
+import { deleteContact } from "../../utils/updatedb";
 interface Props {
   user: any;
   contact: any;
@@ -46,7 +46,7 @@ const View: React.FC<Props> = ({ user, contact, setIsOpen }) => {
           className="absolute top-6 right-6"
           onClick={() => {
             setIsOpen(false);
-            deleteOld(user, contact.email);
+            deleteContact(user, contact.email);
           }}
         >
           <FaTrash className="w-9 h-9 p-2.5 rounded-md bg-red-100 hover:bg-red-200/70 duration-200 text-red-500" />

@@ -5,7 +5,7 @@ import { db } from "../../utils/firebase";
 
 import Nav from "../nav";
 import { FaChevronUp, FaPlus } from "react-icons/fa";
-import New from "./new";
+import Editor from "./editor";
 import { useEffect, useState } from "react";
 import Contact from "./contact";
 import View from "./view";
@@ -25,6 +25,7 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
   const [isViewing, setIsViewing] = useState(false);
   const [contacts, setContacts] = useState<any>([[], [], [], []]);
   const [currentContact, setCurrentContact] = useState({});
+  const [editing, setEditing] = useState(false);
 
   useEffect(() => {
     const unsub = onSnapshot(
@@ -44,7 +45,14 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
   return (
     <>
       <Nav user={user} auth={auth} />
-      {isCreating && <New setIsOpen={setIsCreating} user={user} />}
+      {isCreating && (
+        <Editor
+          setIsOpen={setIsCreating}
+          user={user}
+          edit={editing}
+          contact={currentContact}
+        />
+      )}
       {isViewing && (
         <View user={user} contact={currentContact} setIsOpen={setIsViewing} />
       )}
@@ -98,6 +106,8 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
                               contact={contact}
                               setViewing={setIsViewing}
                               setCurrentContact={setCurrentContact}
+                              setEditing={setEditing}
+                              setIsCreating={setIsCreating}
                               key={contact.name + String(index)}
                             />
                           ))}

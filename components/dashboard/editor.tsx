@@ -1,36 +1,32 @@
 import { useState, Fragment } from "react";
-import { FaCheck, FaChevronLeft, FaPlus } from "react-icons/fa";
+import { FaChevronLeft, FaPlus } from "react-icons/fa";
+import { ImPencil } from "react-icons/im";
 import { Listbox, Transition } from "@headlessui/react";
 import { HiSelector } from "react-icons/hi";
-import { addNew } from "../../utils/updatedb";
+import { addContact } from "../../utils/updatedb";
 
 interface Props {
   setIsOpen: (val: boolean) => void;
   user: any;
+  edit: boolean;
+  contact: any;
 }
 
-const New: React.FC<Props> = ({ setIsOpen, user }) => {
-  const circles = [
-    { circle: "Friends" },
-    { circle: "Family" },
-    { circle: "Acquaintances" },
-    { circle: "Colleagues" },
-  ];
+const Editor: React.FC<Props> = ({ setIsOpen, user, edit, contact }) => {
+  const circles = ["Friends", "Family", "Acquaintances", "Colleagues"];
 
-  const freqs = [
-    { freq: "1" },
-    { freq: "2" },
-    { freq: "3" },
-    { freq: "4" },
-    { freq: "5" },
-  ];
+  const freqs = ["1", "2", "3", "4", "5"];
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [selectedCircle, setSelectedCircle] = useState(circles[0]);
-  const [tone, setTone] = useState("");
-  const [selectedFreq, setSelectedFreq] = useState(freqs[0]);
-  const [intention, setIntention] = useState("");
+  const [name, setName] = useState(edit ? contact.name : "");
+  const [email, setEmail] = useState(edit ? contact.email : "");
+  const [selectedCircle, setSelectedCircle] = useState(
+    edit ? contact.circle : circles[0]
+  );
+  const [tone, setTone] = useState(edit ? contact.tone : "");
+  const [selectedFreq, setSelectedFreq] = useState(
+    edit ? contact.freq : freqs[0]
+  );
+  const [intention, setIntention] = useState(edit ? contact.intention : "");
 
   const [invalid, setInvalid] = useState(false);
   const [emailInvalid, setEmailInvalid] = useState(false);
@@ -63,7 +59,7 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
           </button>
 
           <h1 className="text-lg font-bold text-slate-700">
-            Create New Contact
+            {edit ? "Edit " : "Create New "}Contact
           </h1>
         </header>
         <div className="grid grid-cols-2 gap-4 mt-6">
@@ -74,6 +70,7 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
             <input
               onChange={(event: any) => setName(event.target.value)}
               placeholder="Bob"
+              value={name}
               className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
             />
           </div>
@@ -84,6 +81,7 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
             <input
               onChange={(event: any) => setEmail(event.target.value)}
               placeholder="bob@example.com"
+              value={email}
               className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
             />
           </div>
@@ -94,9 +92,7 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
             <Listbox value={selectedCircle} onChange={setSelectedCircle}>
               <div className="relative mt-1 w-full">
                 <Listbox.Button className="relative w-full cursor-default bg-white/75 border-2 rounded-md border-slate-300 py-2 pl-3 pr-10 text-left focus:outline-none focus:ring-2 focus:ring-purple-600 text-sm md:text-base">
-                  <span className="block truncate">
-                    {selectedCircle.circle}
-                  </span>
+                  <span className="block truncate">{selectedCircle}</span>
                   <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                     <HiSelector
                       className="h-5 w-5 text-slate-300"
@@ -126,7 +122,7 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
                         {(selectedCircle) => (
                           <>
                             <span className={`block truncate ${"font-normal"}`}>
-                              {circle.circle}
+                              {circle}
                             </span>
                           </>
                         )}
@@ -144,6 +140,7 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
             <input
               onChange={(event: any) => setTone(event.target.value)}
               placeholder="e.g. caring, formal"
+              value={tone}
               className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
             />
           </div>
@@ -154,7 +151,7 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
             <Listbox value={selectedFreq} onChange={setSelectedFreq}>
               <div className="relative w-full">
                 <Listbox.Button className="relative w-full cursor-default bg-white/75 border-2 rounded-md border-slate-300 py-2 pl-3 pr-10 text-left focus:outline-none focus:ring-2 focus:ring-purple-600 text-sm md:text-base">
-                  <span className="block truncate">{selectedFreq.freq}</span>
+                  <span className="block truncate">{selectedFreq}</span>
                   <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                     <HiSelector
                       className="h-5 w-5 text-slate-300"
@@ -184,7 +181,7 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
                         {(selectedFreq) => (
                           <>
                             <span className={`block truncate ${"font-normal"}`}>
-                              {freq.freq}
+                              {freq}
                             </span>
                           </>
                         )}
@@ -202,19 +199,20 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
             <input
               onChange={(event: any) => setIntention(event.target.value)}
               placeholder="e.g. coffee chat, hang out"
+              value={intention}
               className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
             />
           </div>
           <button
             onClick={() => {
               if (validateForm()) {
-                addNew(
+                addContact(
                   user,
                   name,
                   email,
-                  selectedCircle.circle,
+                  selectedCircle,
                   tone,
-                  selectedFreq.freq,
+                  selectedFreq,
                   intention
                 );
 
@@ -223,16 +221,25 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
             }}
             className="col-span-2 mt-3 flex items-center justify-center w-full p-2 duration-200 bg-purple-600 rounded-lg hover:bg-purple-600/80 mb-4 font-bold text-white text-center"
           >
-            <FaPlus className="w-4 h-4 mr-2" />
-            Create Contact
+            {edit ? (
+              <>
+                <ImPencil className="w-4 h-4 mr-2" />
+                Edit Contact
+              </>
+            ) : (
+              <>
+                <FaPlus className="w-4 h-4 mr-2" />
+                Create Contact
+              </>
+            )}
           </button>
           {invalid && (
-            <p className="col-span-2 mt-3 w-full text-center p-2 font-bold text-red-500">
+            <p className="col-span-2 w-full text-center font-bold text-red-500">
               Please fill out all the fields.
             </p>
           )}
           {emailInvalid && (
-            <p className="col-span-2 mt-3 w-full text-center p-2 font-bold text-red-500">
+            <p className="col-span-2 w-full text-center font-bold text-red-500">
               Please enter a valid email.
             </p>
           )}
@@ -242,4 +249,4 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
   );
 };
 
-export default New;
+export default Editor;
