@@ -13,10 +13,12 @@ const Home: NextPage = () => {
 
   const app = initializeApp(firebaseConfig);
 
-  const [user, setUser] = useState<string|null>(null)
+  const [user, setUser] = useState<any>(null)
 
   const auth = getAuth()
   const provider = new GoogleAuthProvider();
+
+  //todo email??
   provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 
   const signIn = () => {
@@ -32,7 +34,7 @@ const Home: NextPage = () => {
           console.log("token is null")
         }
         const user = result.user;
-        setUser(user.uid)
+        setUser(user)
         console.log(user)
     }).catch((error) => {
         const errorCode = error.code;
@@ -55,7 +57,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser(user.uid)
+        setUser(user)
       } else {
         setUser(null)
       }
@@ -71,7 +73,7 @@ const Home: NextPage = () => {
       </Head>
 
       {user ? 
-      <Dashboard auth={auth} signOut={signOutFunc} />
+      <Dashboard auth={auth} signOut={signOutFunc} user={user} />
       : 
       <Account signIn={signIn} />
       }

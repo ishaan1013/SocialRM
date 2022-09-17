@@ -4,15 +4,17 @@ import coGenerate from "../../pages/api/cohere";
 import Nav from "../nav";
 
 interface Props {
-  auth: any;
-  signOut: any;
+  auth: any
+  signOut: any
+  user: any
 }
 
-const Dashboard: React.FC<Props> = ({ auth, signOut }) => {
-  coGenerate("Once upon a time there was a");
+const Dashboard: React.FC<Props> = ({ auth, signOut, user }) => {
+  // coGenerate("Once upon a time there was a");
+
   return (
     <>
-      <Nav />
+      <Nav user={user} />
       <main>
         <h1>Dashboard</h1>
         <button
