@@ -17,8 +17,6 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
     { circle: "Colleagues" },
   ];
 
-  const tones = [{ tone: "Casual" }, { tone: "Formal" }];
-
   const freqs = [
     { freq: "1" },
     { freq: "2" },
@@ -30,8 +28,9 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [selectedCircle, setSelectedCircle] = useState(circles[0]);
-  const [selectedTone, setSelectedTone] = useState(tones[0]);
+  const [tone, setTone] = useState("");
   const [selectedFreq, setSelectedFreq] = useState(freqs[0]);
+  const [intention, setIntention] = useState("");
 
   const [invalid, setInvalid] = useState(false);
   const [emailInvalid, setEmailInvalid] = useState(false);
@@ -135,51 +134,12 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
           </div>
           <div className="col-span-1">
             <label className="pl-2 mt-2 text-slate-600 font-semibold mb-1">
-              Tone
+              Tone (e.g. Caring, Formal)
             </label>
-            <Listbox value={selectedTone} onChange={setSelectedTone}>
-              <div className="relative mt-1 w-full">
-                <Listbox.Button className="relative w-full cursor-default bg-white/75 border-2 rounded-md border-slate-300 py-2 pl-3 pr-10 text-left focus:outline-none focus:ring-2 focus:ring-purple-600 text-sm md:text-base">
-                  <span className="block truncate">{selectedTone.tone}</span>
-                  <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                    <HiSelector
-                      className="h-5 w-5 text-slate-300"
-                      aria-hidden="true"
-                    />
-                  </span>
-                </Listbox.Button>
-                <Transition
-                  as={Fragment}
-                  leave="transition ease-in duration-100"
-                  leaveFrom="opacity-100"
-                  leaveTo="opacity-0"
-                >
-                  <Listbox.Options className="z-40 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                    {tones.map((tone, toneIdx) => (
-                      <Listbox.Option
-                        key={toneIdx}
-                        className={({ active }) =>
-                          `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                            active
-                              ? "bg-purple-100 text-purple-900"
-                              : "text-slate-700"
-                          }`
-                        }
-                        value={tone}
-                      >
-                        {(selectedTone) => (
-                          <>
-                            <span className={`block truncate ${"font-normal"}`}>
-                              {tone.tone}
-                            </span>
-                          </>
-                        )}
-                      </Listbox.Option>
-                    ))}
-                  </Listbox.Options>
-                </Transition>
-              </div>
-            </Listbox>
+            <input
+              onChange={(event: any) => setTone(event.target.value)}
+              className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
+            />
           </div>
           <div className="col-span-1">
             <label className="pl-2 mt-2 text-slate-600 font-semibold mb-1">
@@ -229,7 +189,15 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
               </div>
             </Listbox>
           </div>
-
+          <div className="col-span-2">
+            <label className="pl-2 mt-2 text-slate-600 font-semibold mb-1">
+              Intention (e.g. Coffee chat, Hang out)
+            </label>
+            <input
+              onChange={(event: any) => setIntention(event.target.value)}
+              className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
+            />
+          </div>
           <button
             onClick={() => {
               if (validateForm()) {
@@ -238,9 +206,10 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
                   name,
                   email,
                   selectedCircle.circle,
-                  selectedTone.tone,
-                  selectedFreq.freq
-                )
+                  tone,
+                  selectedFreq.freq,
+                  intention
+                );
 
                 setIsOpen(false);
               }

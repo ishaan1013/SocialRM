@@ -12,11 +12,12 @@ interface Props {
 const View: React.FC<Props> = ({ username, contact, setIsOpen }) => {
   const [results, setResults] = useState([]);
   const [currentMessage, setCurrentMessage] = useState(0);
-  console.log(contact.tone);
   useEffect(() => {
-    coGenerate(username, contact.name, contact.tone).then((res: any) => {
-      setResults(res);
-    });
+    coGenerate(username, contact.name, contact.tone, contact.intention).then(
+      (res: any) => {
+        setResults(res);
+      }
+    );
   }, []);
 
   return (

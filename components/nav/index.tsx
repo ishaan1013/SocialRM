@@ -15,7 +15,6 @@ interface Props {
 const Nav: React.FC<Props> = ({ user, auth }) => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
-  console.log("router:", router);
   return (
     <>
       <div className="md:hidden w-full p-4 border-b-[1px] border-slate-200 flex justify-between items-center text-slate-700">
