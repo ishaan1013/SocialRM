@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react'
 
 import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth"
 import { firebaseConfig } from '../utils/firebase'
 
 import Account from '../components/account'
@@ -43,6 +43,15 @@ const Home: NextPage = () => {
     });
   }
 
+  const signOutFunc = () => {
+    signOut(auth).then(() => {
+      console.log("signed out")
+    }).catch((error) => {
+      console.log("error")
+    });
+  }
+
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -62,7 +71,7 @@ const Home: NextPage = () => {
       </Head>
 
       {user ? 
-      <Dashboard />
+      <Dashboard auth={auth} signOut={signOutFunc} />
       : 
       <Account signIn={signIn} />
       }
