@@ -14,15 +14,9 @@ const Dashboard: React.FC<Props> = ({ auth, signOut, user }) => {
 
   return (
     <>
-      <Nav user={user} />
+      <Nav user={user} signOut={signOut} />
       <main>
         <h1>Dashboard</h1>
-        <button
-          onClick={() => signOut()}
-          className="w-full sm:w-auto text-sm sm:text-base px-0 sm:px-10 py-2 flex justify-center items-center rounded-lg bg-purple-500 hover:bg-purple-500/90 text-white font-semibold duration-200"
-        >
-          Sign Out
-        </button>
       </main>
     </>
   );

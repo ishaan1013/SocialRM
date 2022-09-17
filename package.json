@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.2",
     "autoprefixer": "^10.4.11",
     "cohere-ai": "^4.3.0",
     "firebase": "^9.10.0",
