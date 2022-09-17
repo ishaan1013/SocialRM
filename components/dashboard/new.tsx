@@ -133,7 +133,7 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
             </Listbox>
           </div>
           <div className="col-span-1">
-            <label className="pl-2 mt-2 text-slate-600 font-semibold mb-1">
+            <label className="text-left pl-2 mt-2 text-slate-600 font-semibold mb-1">
               Tone (e.g. Caring, Formal)
             </label>
             <input
@@ -190,7 +190,7 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
             </Listbox>
           </div>
           <div className="col-span-2">
-            <label className="pl-2 mt-2 text-slate-600 font-semibold mb-1">
+            <label className="text-left pl-2 mt-2 text-slate-600 font-semibold mb-1">
               Intention (e.g. Coffee chat, Hang out)
             </label>
             <input
