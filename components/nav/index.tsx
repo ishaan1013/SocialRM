@@ -27,7 +27,7 @@ const Nav:React.FC<Props> = ({user, signOut}) => {
             {isOpen && 
             <nav className="h-screen w-screen fixed top-0 left-0 flex flex-col justify-start pt-24 px-6 bg-gradient-to-br from-purple-700 to-purple-500 z-50">
                 <button
-                className="absolute top-4 right-4"
+                className="absolute top-6 right-6"
                 onClick={() => setIsOpen(false)}
                 >
                     <IoClose className="w-9 h-9 p-2 rounded-lg bg-white/10 hover:bg-white/20 duration-200 text-white" />
@@ -37,7 +37,7 @@ const Nav:React.FC<Props> = ({user, signOut}) => {
                     <div
                     className="cursor-pointer w-full p-2 duration-200 bg-transparent rounded-lg hover:bg-white/10 mb-4 font-semibold text-white text-start"
                     >
-                        Home
+                        Dashboard
                     </div>
                 </Link>
 
