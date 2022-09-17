@@ -58,14 +58,14 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
           className="absolute top-6 left-6"
           onClick={() => setIsOpen(false)}
         >
-          <FaChevronLeft className="w-9 h-9 p-2 rounded-md bg-purple-600 hover:bg-purple-600/80 duration-200 text-white" />
+          <FaChevronLeft className="w-9 h-9 p-2 rounded-md bg-white hover:bg-white/70 duration-200 text-purple-600" />
         </button>
 
         <h1 className="text-lg font-bold text-slate-700">Create New Contact</h1>
 
         <div className="grid grid-cols-2 gap-4 mt-6">
           <div className="col-span-1">
-            <label className="pl-2 mt-4 text-slate-600 font-semibold mb-1">
+            <label className="text-left pl-2 mt-4 text-slate-600 font-semibold mb-1">
               Name
             </label>
             <input
@@ -74,7 +74,7 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
             />
           </div>
           <div className="col-span-1">
-            <label className="pl-2 mt-2 text-slate-600 font-semibold mb-1">
+            <label className="text-left pl-2 mt-2 text-slate-600 font-semibold mb-1">
               Email
             </label>
             <input
@@ -83,7 +83,7 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
             />
           </div>
           <div className="col-span-2">
-            <label className="pl-2 mt-2 text-slate-600 font-semibold mb-1">
+            <label className="text-left pl-2 mt-2 text-slate-600 font-semibold mb-1">
               Social Circle
             </label>
             <Listbox value={selectedCircle} onChange={setSelectedCircle}>
@@ -142,7 +142,7 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
             />
           </div>
           <div className="col-span-1">
-            <label className="pl-2 mt-2 text-slate-600 font-semibold mb-1">
+            <label className="text-left pl-2 mt-2 text-slate-600 font-semibold mb-1">
               Contact Frequency
             </label>
             <Listbox value={selectedFreq} onChange={setSelectedFreq}>
