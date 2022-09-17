@@ -70,7 +70,7 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <div className="w-screen h-screen">
+    <main className="w-screen h-screen">
       <Head>
         <title>SocialRM</title>
         <meta
@@ -85,7 +85,7 @@ const Home: NextPage = () => {
       ) : (
         <Account signIn={signIn} />
       )}
-    </div>
+    </main>
   );
 };
 

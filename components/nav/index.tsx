@@ -17,14 +17,14 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
   const router = useRouter();
   return (
     <>
-      <div className="md:hidden w-full p-4 border-b-[1px] border-slate-200 flex justify-between items-center text-slate-700">
+      <header className="md:hidden w-full p-4 border-b-[1px] border-slate-200 flex justify-between items-center text-slate-700">
         <Link href="/">
           <h1 className="font-bold text-lg cursor-pointer">SocialRM</h1>
         </Link>
         <button onClick={() => setIsOpen(true)}>
           <IoMenu className="w-9 h-9 p-2 rounded-lg bg-purple-200 hover:bg-purple-300/80 duration-200 text-slate-700" />
         </button>
-      </div>
+      </header>
       {isOpen && (
         <nav className="md:hidden h-screen w-screen fixed top-0 left-0 flex flex-col justify-start pt-24 px-6 bg-gradient-to-br from-purple-700 to-purple-500 z-50">
           <button
@@ -66,7 +66,6 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
               </p>
             </div>
           </div>
-
           <button
             className="w-full p-2 duration-200 bg-white rounded-lg hover:bg-purple-100/90 mt-12 font-bold text-purple-600 text-center"
             onClick={() => signOutFunc(auth)}
@@ -81,7 +80,6 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
         <h1 className="absolute top-7 left-6 font-bold text-[1.35rem]  text-white">
           SocialRM
         </h1>
-
 
         <Link href="/">
           <button

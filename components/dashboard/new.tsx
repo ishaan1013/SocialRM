@@ -53,16 +53,19 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
 
   return (
     <>
-      <div className="h-screen w-screen fixed top-0 left-0 flex flex-col items-center justify-start pt-20 px-6 bg-[#f6f6fd]/70 backdrop-blur-lg z-50">
-        <button
-          className="absolute top-6 left-6"
-          onClick={() => setIsOpen(false)}
-        >
-          <FaChevronLeft className="w-9 h-9 p-2 rounded-md bg-white hover:bg-white/70 duration-200 text-purple-600" />
-        </button>
+      <main className="h-screen w-screen fixed top-0 left-0 flex flex-col items-center justify-start pt-20 px-6 bg-[#f6f6fd]/70 backdrop-blur-lg z-50">
+        <header>
+          <button
+            className="absolute top-6 left-6"
+            onClick={() => setIsOpen(false)}
+          >
+            <FaChevronLeft className="w-9 h-9 p-2 rounded-md bg-white hover:bg-white/70 duration-200 text-purple-600" />
+          </button>
 
-        <h1 className="text-lg font-bold text-slate-700">Create New Contact</h1>
-
+          <h1 className="text-lg font-bold text-slate-700">
+            Create New Contact
+          </h1>
+        </header>
         <div className="grid grid-cols-2 gap-4 mt-6">
           <div className="col-span-1">
             <label className="text-left pl-2 mt-4 text-slate-600 font-semibold mb-1">
@@ -70,6 +73,7 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
             </label>
             <input
               onChange={(event: any) => setName(event.target.value)}
+              placeholder="Bob"
               className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
             />
           </div>
@@ -79,6 +83,7 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
             </label>
             <input
               onChange={(event: any) => setEmail(event.target.value)}
+              placeholder="bob@example.com"
               className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
             />
           </div>
@@ -134,19 +139,20 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
           </div>
           <div className="col-span-1">
             <label className="text-left pl-2 mt-2 text-slate-600 font-semibold mb-1">
-              Tone (e.g. Caring, Formal)
+              Tone
             </label>
             <input
               onChange={(event: any) => setTone(event.target.value)}
+              placeholder="e.g. caring, formal"
               className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
             />
           </div>
           <div className="col-span-1">
             <label className="text-left pl-2 mt-2 text-slate-600 font-semibold mb-1">
-              Contact Frequency
+              Frequency
             </label>
             <Listbox value={selectedFreq} onChange={setSelectedFreq}>
-              <div className="relative mt-1 w-full">
+              <div className="relative w-full">
                 <Listbox.Button className="relative w-full cursor-default bg-white/75 border-2 rounded-md border-slate-300 py-2 pl-3 pr-10 text-left focus:outline-none focus:ring-2 focus:ring-purple-600 text-sm md:text-base">
                   <span className="block truncate">{selectedFreq.freq}</span>
                   <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -191,10 +197,11 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
           </div>
           <div className="col-span-2">
             <label className="text-left pl-2 mt-2 text-slate-600 font-semibold mb-1">
-              Intention (e.g. Coffee chat, Hang out)
+              Intention
             </label>
             <input
               onChange={(event: any) => setIntention(event.target.value)}
+              placeholder="e.g. coffee chat, hang out"
               className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
             />
           </div>
@@ -230,7 +237,7 @@ const New: React.FC<Props> = ({ setIsOpen, user }) => {
             </p>
           )}
         </div>
-      </div>
+      </main>
     </>
   );
 };
