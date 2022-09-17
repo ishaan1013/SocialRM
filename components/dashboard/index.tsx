@@ -11,7 +11,7 @@ import Contact from "./contact";
 import View from "./view";
 
 import Image from "next/image";
-import Bg from "../../public/graphic1.svg"
+import Bg from "../../public/graphic1.svg";
 
 const circles = ["Friends", "Family", "Acquaintances", "Colleagues"];
 const emojis = ["🤙", "👨‍👩‍👧‍👦", "👋", "💼"];
@@ -26,31 +26,27 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
   const [contacts, setContacts] = useState<any>([[], [], [], []]);
   const [currentContact, setCurrentContact] = useState({});
 
-  
   useEffect(() => {
-    const unsub = onSnapshot(query(collection(db, "users", user.email, "contacts")), (querySnapshot) => {
-      querySnapshot.forEach((doc) => {
+    const unsub = onSnapshot(
+      query(collection(db, "users", user.email, "contacts")),
+      (querySnapshot) => {
+        querySnapshot.forEach((doc) => {
           // newContacts.push(doc.data())
-          let newContacts = [...contacts]
-          const index = circles.indexOf(doc.data().circle)
-          console.log("newContacts:", newContacts)
-          newContacts[index].push(doc.data())
-          setContacts(newContacts)
-  
-      })
-      console.log("contacts:", contacts)
-    })
+          let newContacts = [...contacts];
+          const index = circles.indexOf(doc.data().circle);
+          console.log("newContacts:", newContacts);
+          newContacts[index].push(doc.data());
+          setContacts(newContacts);
+        });
+        console.log("contacts:", contacts);
+      }
+    );
   }, []);
 
   return (
     <>
       <Nav user={user} auth={auth} />
-      {isCreating && (
-        <New
-          setIsOpen={setIsCreating}
-          user={user}
-        />
-      )}
+      {isCreating && <New setIsOpen={setIsCreating} user={user} />}
       {isViewing && (
         <View
           username={user.displayName}
@@ -59,7 +55,6 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
         />
       )}
       <main className="p-6 flex flex-col justify-start items-center md:pl-[22rem] sm:pt-8 md:pt-12">
-
         <div className="fixed bottom-0 opacity-20">
           <div className="relative w-[310px] h-[230px]">
             <Image src={Bg} />
@@ -82,24 +77,39 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
               {({ open }) => (
                 <>
                   <Disclosure.Button className="flex w-full justify-between items-center rounded-lg bg-purple-100 px-4 py-2 text-left text-base font-medium text-slate-700 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-600 focus-visible:ring-opacity-75">
-                    <span>{circle} {emojis[i]}</span>
+                    <span>
+                      {circle} {emojis[i]}
+                    </span>
                     <FaChevronUp
                       className={`${
                         open ? "rotate-180 transform" : ""
                       } h-4 w-4 text-purple-600`}
                     />
                   </Disclosure.Button>
-                  <Disclosure.Panel className="pt-4 pb-2">
-                    {contacts[i].filter((item:any, index:number) => index < Math.ceil(contacts[i].length / 2)).map((contact:any) => (
-                      <Contact
-                        contact={contact}
-                        setViewing={setIsViewing}
-                        setCurrentContact={setCurrentContact}
-                        contacts={contacts}
-                        setContacts={setContacts}
-                        key={contact.name}
-                      />
-                    ))}
+                  <Disclosure.Panel>
+                    {!contacts[i].length ? (
+                      <p className="text-center pt-4 text-gray-500">
+                        No contacts yet
+                      </p>
+                    ) : (
+                      <div className="pt-2 pb-2">
+                        {contacts[i]
+                          .filter(
+                            (item: any, index: number) =>
+                              index < Math.ceil(contacts[i].length / 2)
+                          )
+                          .map((contact: any) => (
+                            <Contact
+                              contact={contact}
+                              setViewing={setIsViewing}
+                              setCurrentContact={setCurrentContact}
+                              contacts={contacts}
+                              setContacts={setContacts}
+                              key={contact.name}
+                            />
+                          ))}
+                      </div>
+                    )}
                   </Disclosure.Panel>
                 </>
               )}
