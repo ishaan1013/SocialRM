@@ -3,12 +3,14 @@ import { IoClose, IoMenu } from 'react-icons/io5'
 import { CgProfile } from 'react-icons/cg'
 import Link from 'next/link'
 
+import { signOutFunc } from "../../pages/index"
+
 interface Props {
     user: any
-    signOut: any
+    auth: any
 }
 
-const Nav:React.FC<Props> = ({user, signOut}) => {
+const Nav:React.FC<Props> = ({user, auth}) => {
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -52,14 +54,14 @@ const Nav:React.FC<Props> = ({user, signOut}) => {
                 <div className="flex items-center w-full px-2">
                     <CgProfile className="w-8 h-8 text-white mr-3" />
                     <div>
-                        <p className="text-white font-semibold -mb-1">{user.displayName}</p>
-                        <p className="text-white/70 font-base text-sm">{user.email}</p>
+                        <p className="text-white font-semibold -mb-1">{user ? user.displayName : ""}</p>
+                        <p className="text-white/70 font-base text-sm">{user ? user.email : ""}</p>
                     </div>
                 </div>
 
                 <button
                 className="w-full p-2 duration-200 bg-white rounded-lg hover:bg-purple-100/90 mt-12 font-bold text-purple-600 text-center"
-                onClick={() => signOut()}
+                onClick={() => signOutFunc(auth)}
                 >
                     Sign Out
                 </button>

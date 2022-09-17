@@ -10,18 +10,17 @@ import View from "./view";
 
 interface Props {
   auth: any;
-  signOut: any;
   user: any;
 }
 
-const Dashboard: React.FC<Props> = ({ auth, signOut, user }) => {
+const Dashboard: React.FC<Props> = ({ auth, user }) => {
 
   const [isCreating, setIsCreating] = useState(false)
   const [isViewing, setIsViewing] = useState(false)
 
   return (
     <>
-      <Nav user={user} signOut={signOut} />
+      <Nav user={user} auth={auth} />
       {isCreating && <New setIsOpen={setIsCreating} /> }
       {isViewing && <View setIsOpen={setIsViewing} /> }
       <main className="p-4">
