@@ -5,6 +5,8 @@ import Nav from "../nav";
 import { FaChevronUp, FaPlus } from "react-icons/fa";
 import New from "./new";
 import { useState } from "react";
+import Contact from "./contact";
+import View from "./view";
 
 interface Props {
   auth: any;
@@ -15,11 +17,13 @@ interface Props {
 const Dashboard: React.FC<Props> = ({ auth, signOut, user }) => {
 
   const [isCreating, setIsCreating] = useState(false)
+  const [isViewing, setIsViewing] = useState(false)
 
   return (
     <>
       <Nav user={user} signOut={signOut} />
       {isCreating && <New setIsOpen={setIsCreating} /> }
+      {isViewing && <View setIsOpen={setIsViewing} /> }
       <main className="p-4">
         <h1 className="w-full text-center mb-6 text-lg font-bold text-slate-700">
           Your Circles
@@ -44,12 +48,8 @@ const Dashboard: React.FC<Props> = ({ auth, signOut, user }) => {
                   } h-4 w-4 text-purple-600`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className="px-4 pt-4 pb-2">
-                <p className="text-sm text-slate-500">
-                  If you're unhappy with your purchase for any reason, email us
-                  within 90 days and we'll refund you in full, no questions
-                  asked.
-                </p>
+              <Disclosure.Panel className="pt-4 pb-2">
+                <Contact setViewing={setIsViewing} />
                 <div className="w-full h-[1px] bg-slate-200 mt-6" />
               </Disclosure.Panel>
             </>
@@ -66,7 +66,7 @@ const Dashboard: React.FC<Props> = ({ auth, signOut, user }) => {
                   } h-4 w-4 text-purple-600`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className="px-4 pt-4 pb-2">
+              <Disclosure.Panel className="pt-4 pb-2">
                 <p className="text-sm text-slate-500">
                   If you're unhappy with your purchase for any reason, email us
                   within 90 days and we'll refund you in full, no questions
@@ -88,7 +88,7 @@ const Dashboard: React.FC<Props> = ({ auth, signOut, user }) => {
                   } h-4 w-4 text-purple-600`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className="px-4 pt-4 pb-2">
+              <Disclosure.Panel className="pt-4 pb-2">
                 <p className="text-sm text-slate-500">
                   If you're unhappy with your purchase for any reason, email us
                   within 90 days and we'll refund you in full, no questions
@@ -110,7 +110,7 @@ const Dashboard: React.FC<Props> = ({ auth, signOut, user }) => {
                   } h-4 w-4 text-purple-600`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className="px-4 pt-4 pb-2">
+              <Disclosure.Panel className="pt-4 pb-2">
                 <p className="text-sm text-slate-500">
                   If you're unhappy with your purchase for any reason, email us
                   within 90 days and we'll refund you in full, no questions

@@ -18,8 +18,8 @@ const Home: NextPage = () => {
   const auth = getAuth()
   const provider = new GoogleAuthProvider();
 
-  //todo email??
-  provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+  provider.addScope('https://www.googleapis.com/auth/gmail.compose');
+  provider.addScope('https://www.googleapis.com/auth/gmail.readonly');
 
   const signIn = () => {
     signInWithPopup(auth, provider)
