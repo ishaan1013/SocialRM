@@ -1,17 +1,32 @@
-// import { apiKey } from "../../apiKey.js";
-
-const apiKey = process.env.COHERE_APIKEY;
+import { COHERE_APIKEY } from "../../apiKey";
+//const apiKey = process.env.COHERE_APIKEY;
 
 const cohere = require("cohere-ai");
-cohere.init(apiKey, "2021-11-08");
+cohere.init(COHERE_APIKEY, "2021-11-08");
 
-cohere.init(apiKey);
+cohere.init(COHERE_APIKEY);
 
-const coGenerate = async (prompt: string) => {
-  const response = await cohere.generate({
-    prompt: prompt,
+const coGenerate = async (prompt: string, model: string) => {
+  //generate first part
+  const response1 = await cohere
+    .generate({
+      prompt: prompt,
+      model: model,
+    })
+    .then();
+
+  //chain generation
+  const response2 = await cohere.generate({
+    prompt: prompt + response1.body.generations[0].text,
+    model: model,
+    frequency_penalty: 0.2,
+    num_generations: 5,
   });
-  console.log(`Prediction: ${response.body.generations[0].text}`);
+
+  // return full generated phrases
+  return response2.body.generations.map(
+    (gen: any) => prompt + response1.body.generations[0].text + gen.text
+  );
 };
 
 export default coGenerate;
