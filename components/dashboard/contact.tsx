@@ -16,7 +16,7 @@ const Contact: React.FC<Props> = ({
   setCurrentContact,
 }) => {
   return (
-    <div className="mb-2 flex items-center justify-between h-full p-2 rounded-lg bg-transparent border-2 border-slate-300">
+    <div className="mb-2 flex items-center justify-between h-full p-2 rounded-lg bg-white/75 backdrop-blur-md border-2 border-slate-300">
       <h1 className="text-sm font-semibold text-slate-500">{contact.name}</h1>
       <div className="flex items-center">
         <button
