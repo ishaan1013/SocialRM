@@ -1,17 +1,16 @@
+import { useState, useEffect } from "react";
+
 import { getAuth, signOut } from "firebase/auth";
-import coGenerate from "../../pages/api/cohere";
 
 import Nav from "../nav";
-
+import Send from "../send";
 interface Props {
-  auth: any
-  signOut: any
-  user: any
+  auth: any;
+  signOut: any;
+  user: any;
 }
 
 const Dashboard: React.FC<Props> = ({ auth, signOut, user }) => {
-  // coGenerate("Once upon a time there was a");
-
   return (
     <>
       <Nav user={user} />
@@ -23,6 +22,7 @@ const Dashboard: React.FC<Props> = ({ auth, signOut, user }) => {
         >
           Sign Out
         </button>
+        <Send category="Friend" name="Ryan" style="informal" />
       </main>
     </>
   );
