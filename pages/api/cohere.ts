@@ -1,5 +1,5 @@
-import { COHERE_APIKEY } from "../../apiKey";
-//const apiKey = process.env.COHERE_APIKEY;
+// import { COHERE_APIKEY } from "../../apiKey";
+const COHERE_APIKEY = "RpBAWJkgiugEpfLZzEbVOUnB0XJXAkc71B8DbGui";
 
 const cohere = require("cohere-ai");
 cohere.init(COHERE_APIKEY, "2021-11-08");

@@ -81,7 +81,7 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
                   />
                 </Disclosure.Button>
                 <Disclosure.Panel className="pt-4 pb-2">
-                  {contacts[i].filter((item, index) => index < Math.ceil(contacts[i].length / 2)).map((contact) => (
+                  {contacts[i].filter((item:any, index:number) => index < Math.ceil(contacts[i].length / 2)).map((contact:any) => (
                     <Contact
                       contact={contact}
                       setViewing={setIsViewing}
