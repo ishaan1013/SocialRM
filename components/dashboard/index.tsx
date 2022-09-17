@@ -14,7 +14,7 @@ interface Props {
   user: any;
 }
 
-const Dashboard: React.FC<Props> = ({ auth, signOut, user }) => {
+const Dashboard: React.FC<Props> = ({ auth, user }) => {
   const [isCreating, setIsCreating] = useState(false);
   const [isViewing, setIsViewing] = useState(false);
   const [contacts, setContacts] = useState<any[][]>([[], [], [], []]);
@@ -22,7 +22,7 @@ const Dashboard: React.FC<Props> = ({ auth, signOut, user }) => {
 
   return (
     <>
-      <Nav user={user} signOut={signOut} />
+      <Nav user={user} auth={auth} />
       {isCreating && (
         <New
           setIsOpen={setIsCreating}
