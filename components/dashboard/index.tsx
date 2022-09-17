@@ -58,9 +58,9 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
           setIsOpen={setIsViewing}
         />
       )}
-      <main className="p-4 flex flex-col justify-start items-center">
+      <main className="p-6 flex flex-col justify-start items-center md:pl-[22rem] sm:pt-8 md:pt-12">
 
-        <div className="absolute bottom-0 opacity-20">
+        <div className="fixed bottom-0 opacity-20">
           <div className="relative w-[310px] h-[230px]">
             <Image src={Bg} />
           </div>
