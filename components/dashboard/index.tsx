@@ -28,6 +28,7 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
           setIsOpen={setIsCreating}
           contacts={contacts}
           setContacts={setContacts}
+          user={user}
         />
       )}
       {isViewing && (

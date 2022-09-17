@@ -2,14 +2,17 @@ import { useState, Fragment } from "react";
 import { FaCheck, FaChevronLeft, FaPlus } from "react-icons/fa";
 import { Listbox, Transition } from "@headlessui/react";
 import { HiSelector } from "react-icons/hi";
+import addNew from "../../utils/addNew";
+
 
 interface Props {
-  setIsOpen: (val: boolean) => void;
-  contacts: any;
-  setContacts: (val: any) => void;
+  setIsOpen: (val: boolean) => void
+  contacts: any
+  setContacts: (val: any) => void
+  user: any
 }
 
-const New: React.FC<Props> = ({ setIsOpen, contacts, setContacts }) => {
+const New: React.FC<Props> = ({ setIsOpen, contacts, setContacts, user }) => {
   const circles = [
     { circle: "Friends" },
     { circle: "Family" },
@@ -105,11 +108,6 @@ const New: React.FC<Props> = ({ setIsOpen, contacts, setContacts }) => {
                             <span className={`block truncate ${"font-normal"}`}>
                               {circle.circle}
                             </span>
-                            {/* {selectedCircle ? (
-                                                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-purple-600">
-                                                <FaCheck className="h-5 w-5" aria-hidden="true" />
-                                                </span>
-                                            ) : null} */}
                           </>
                         )}
                       </Listbox.Option>
@@ -158,11 +156,6 @@ const New: React.FC<Props> = ({ setIsOpen, contacts, setContacts }) => {
                             <span className={`block truncate ${"font-normal"}`}>
                               {tone.tone}
                             </span>
-                            {/* {selectedCircle ? (
-                                                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-purple-600">
-                                                <FaCheck className="h-5 w-5" aria-hidden="true" />
-                                                </span>
-                                            ) : null} */}
                           </>
                         )}
                       </Listbox.Option>
@@ -211,11 +204,6 @@ const New: React.FC<Props> = ({ setIsOpen, contacts, setContacts }) => {
                             <span className={`block truncate ${"font-normal"}`}>
                               {freq.freq}
                             </span>
-                            {/* {selectedCircle ? (
-                                                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-purple-600">
-                                                <FaCheck className="h-5 w-5" aria-hidden="true" />
-                                                </span>
-                                            ) : null} */}
                           </>
                         )}
                       </Listbox.Option>
@@ -229,7 +217,7 @@ const New: React.FC<Props> = ({ setIsOpen, contacts, setContacts }) => {
           <button
             onClick={() => {
               contacts[
-                ["Friends", "Family", "Acquaintances", "Colleagues"].indexOf(
+                ["Friends", "Family", "Acquaintances", "Coworkers"].indexOf(
                   selectedCircle.circle
                 )
               ].push({
@@ -239,6 +227,9 @@ const New: React.FC<Props> = ({ setIsOpen, contacts, setContacts }) => {
                 tone: selectedTone.tone,
                 freq: selectedFreq.freq,
               });
+
+              addNew(user, name, email, selectedCircle.circle, selectedTone.tone, selectedFreq.freq)
+
               setIsOpen(false);
               setContacts(contacts);
             }}
