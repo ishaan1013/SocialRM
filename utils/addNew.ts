@@ -1,4 +1,4 @@
-import { doc, setDoc } from "firebase/firestore"; 
+import { doc, setDoc, Timestamp } from "firebase/firestore"; 
 import { db } from "./firebase"
 
 const addNew = async (user: any, name: string, email: string, circle: string, tone: string, freq: string) => {
@@ -8,7 +8,8 @@ const addNew = async (user: any, name: string, email: string, circle: string, to
         circle: circle,
         tone: tone,
         freq: freq,
-    });
+        created: Timestamp.now()
+    })
 }
 
 export default addNew
