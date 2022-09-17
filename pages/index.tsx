@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
@@ -31,6 +31,7 @@ const Home: NextPage = () => {
           console.log("token is null")
         }
         const user = result.user;
+        setUser(user.uid)
         console.log(user)
     }).catch((error) => {
         const errorCode = error.code;
@@ -41,13 +42,15 @@ const Home: NextPage = () => {
     });
   }
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setUser(user.uid)
-    } else {
-      setUser(null)
-    }
-  })
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user.uid)
+      } else {
+        setUser(null)
+      }
+    })
+  }, [])
 
   return (
     <div className="w-screen h-screen">
@@ -57,14 +60,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* {user ? 
+      {user ? 
       <main className="w-screen h-screen">
       </main>
       : 
-      <Account /> 
-      } */}
-
       <Account signIn={signIn} />
+      }
+
 
 
 
