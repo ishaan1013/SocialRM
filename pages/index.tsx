@@ -7,6 +7,7 @@ import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from
 import { firebaseConfig } from '../utils/firebase'
 
 import Account from '../components/account'
+import Dashboard from '../components/dashboard';
 
 const Home: NextPage = () => {
 
@@ -61,8 +62,7 @@ const Home: NextPage = () => {
       </Head>
 
       {user ? 
-      <main className="w-screen h-screen">
-      </main>
+      <Dashboard />
       : 
       <Account signIn={signIn} />
       }
