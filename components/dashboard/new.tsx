@@ -248,6 +248,14 @@ const New: React.FC<Props> = ({ setIsOpen, contacts, setContacts, user }) => {
                 });
                 setIsOpen(false);
                 setContacts(contacts);
+                addNew(
+                  user,
+                  name,
+                  email,
+                  selectedCircle.circle,
+                  selectedTone.tone,
+                  selectedFreq.freq
+                );
               }
             }}
             className="col-span-2 mt-3 flex items-center justify-center w-full p-2 duration-200 bg-purple-600 rounded-lg hover:bg-purple-600/80 mb-4 font-bold text-white text-center"
