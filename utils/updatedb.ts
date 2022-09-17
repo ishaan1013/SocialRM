@@ -1,9 +1,9 @@
-import { doc, setDoc, deleteDoc, Timestamp } from "firebase/firestore";
+import { doc, setDoc, deleteDoc, updateDoc, Timestamp } from "firebase/firestore";
 import { db } from "./firebase";
 
 const freqs = [13148730000, 5259492000, 2629746000, 1209600000, 604800000]
 
-export const addNew = async (
+export const addContact = async (
   user: any,
   name: string,
   email: string,
@@ -24,6 +24,25 @@ export const addNew = async (
   });
 };
 
-export const deleteOld = async (user: any, email: any) => {
+export const updateContact = async (
+  user: any,
+  name: string,
+  email: string,
+  circle: string,
+  tone: string,
+  freq: string,
+  intention: string
+) => {
+  await updateDoc(doc(db, "users", user.email, "contacts", email), {
+    name: name,
+    email: email,
+    circle: circle,
+    tone: tone,
+    freq: freq,
+    intention: intention,
+  });
+};
+
+export const deleteContact = async (user: any, email: any) => {
   await deleteDoc(doc(db, "users", user.email, "contacts", email));
 };
