@@ -83,12 +83,6 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
           SocialRM
         </h1>
 
-        <button
-          className="absolute top-6 right-6"
-          onClick={() => setIsOpen(false)}
-        >
-          <IoClose className="w-9 h-9 p-2 rounded-lg bg-white/10 hover:bg-white/20 duration-200 text-white" />
-        </button>
 
         <Link href="/">
           <button
