@@ -6,7 +6,12 @@ cohere.init(COHERE_APIKEY, "2021-11-08");
 
 cohere.init(COHERE_APIKEY);
 
-const coGenerate = async (username: string, name: string, tone: string) => {
+const coGenerate = async (
+  username: string,
+  name: string,
+  tone: string,
+  intention: string
+) => {
   const prompt = `This email writing program can generate full emails from simple commands. Here are some examples:
 Command: Thank ${name} for the gift cards
 Email: Hey ${name}, Thank you so much for the gift cards. I really appreciate it. I hope to see you soon. Best, ${username}.
@@ -23,7 +28,9 @@ Email: Hey ${name}, Long time no see! Let's catch up and grab coffee. What's you
 Command: Tell ${name} to keep up the good work
 Email: Hi ${name}, Great job on that presentation. I'm very impressed with the progress you're making. Keep it up! Regards, ${username}
 --
-Command: ${tone} ask ${name} how he is doing, and ask if he wants to chat or hang out sometime.
+Command: ${
+    tone.endsWith("ly") ? tone : tone + "ly"
+  } ask ${name} how he is doing, and ask if he wants to ${intention}.
 Email:`;
 
   let results: any[] = [];
@@ -41,10 +48,9 @@ Email:`;
       return_likelihoods: "NONE",
     });
     response.body.generations.forEach((gen: any) => {
-      results.push(gen.text.replace("--", ""));
+      results.push(gen.text.replace("--", "").trim());
     });
   }
-  console.log(results);
   return results;
 };
 

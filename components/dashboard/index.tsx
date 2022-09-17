@@ -34,11 +34,9 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
           // newContacts.push(doc.data())
           let newContacts = [...contacts];
           const index = circles.indexOf(doc.data().circle);
-          console.log("newContacts:", newContacts);
           newContacts[index].push(doc.data());
           setContacts(newContacts);
         });
-        console.log("contacts:", contacts);
       }
     );
   }, []);
@@ -103,8 +101,6 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
                               contact={contact}
                               setViewing={setIsViewing}
                               setCurrentContact={setCurrentContact}
-                              contacts={contacts}
-                              setContacts={setContacts}
                               key={contact.name}
                             />
                           ))}
