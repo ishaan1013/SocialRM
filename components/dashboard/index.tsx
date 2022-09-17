@@ -96,12 +96,13 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
                             (item: any, index: number) =>
                               index < Math.ceil(contacts[i].length / 2)
                           )
-                          .map((contact: any) => (
+                          .map((contact: any, index: any) => (
                             <Contact
+                              user={user}
                               contact={contact}
                               setViewing={setIsViewing}
                               setCurrentContact={setCurrentContact}
-                              key={contact.name}
+                              key={contact.name + String(index)}
                             />
                           ))}
                       </div>

@@ -1,7 +1,7 @@
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, deleteDoc } from "firebase/firestore";
 import { db } from "./firebase";
 
-const addNew = async (
+export const addNew = async (
   user: any,
   name: string,
   email: string,
@@ -20,4 +20,6 @@ const addNew = async (
   });
 };
 
-export default addNew;
+export const deleteOld = async (user: any, email: any) => {
+  await deleteDoc(doc(db, "users", user.email, "contacts", email));
+};

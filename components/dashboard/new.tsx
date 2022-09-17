@@ -2,7 +2,7 @@ import { useState, Fragment } from "react";
 import { FaCheck, FaChevronLeft, FaPlus } from "react-icons/fa";
 import { Listbox, Transition } from "@headlessui/react";
 import { HiSelector } from "react-icons/hi";
-import addNew from "../../utils/addNew";
+import { addNew } from "../../utils/updatedb";
 
 interface Props {
   setIsOpen: (val: boolean) => void;
