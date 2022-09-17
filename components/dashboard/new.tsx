@@ -229,7 +229,7 @@ const New: React.FC<Props> = ({ setIsOpen, contacts, setContacts }) => {
           <button
             onClick={() => {
               contacts[
-                ["Friends", "Family", "Acquaintances", "Coworkers"].indexOf(
+                ["Friends", "Family", "Acquaintances", "Colleagues"].indexOf(
                   selectedCircle.circle
                 )
               ].push({

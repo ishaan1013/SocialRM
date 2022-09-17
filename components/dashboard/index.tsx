@@ -8,7 +8,7 @@ import { useState } from "react";
 import Contact from "./contact";
 import View from "./view";
 
-const circles = ["Friends", "Family", "Acquaintances", "Coworkers"];
+const circles = ["Friends", "Family", "Acquaintances", "Colleagues"];
 interface Props {
   auth: any;
   user: any;
@@ -68,6 +68,8 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
                       contact={contact}
                       setViewing={setIsViewing}
                       setCurrentContact={setCurrentContact}
+                      contacts={contacts}
+                      setContacts={setContacts}
                       key={contact.name}
                     />
                   ))}
