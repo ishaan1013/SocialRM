@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth"
-import { firebaseConfig } from '../utils/firebase'
+import { firebaseConfig, db } from '../utils/firebase'
 
 import Account from '../components/account'
 import Dashboard from '../components/dashboard';
