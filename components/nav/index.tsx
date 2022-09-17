@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { IoClose, IoMenu } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
+import { FaChevronLeft } from "react-icons/fa";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { signOutFunc } from "../../pages/index";
 
@@ -12,7 +14,8 @@ interface Props {
 
 const Nav: React.FC<Props> = ({ user, auth }) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const router = useRouter();
+  console.log("router:", router);
   return (
     <>
       <div className="md:hidden w-full p-4 border-b-[1px] border-slate-200 flex justify-between items-center text-slate-700">
@@ -31,19 +34,27 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
           >
             <IoClose className="w-9 h-9 p-2 rounded-lg bg-white/10 hover:bg-white/20 duration-200 text-white" />
           </button>
-
           <Link href="/">
             <button
-              onClick={() => setIsOpen(false)}
-              className="cursor-pointer w-full p-2 duration-200 bg-transparent rounded-lg hover:bg-white/10 mb-4 font-semibold text-white text-start"
+              onClick={() => {
+                router.pathname == "/" && setIsOpen(false);
+              }}
+              className="cursor-pointer w-full p-2 duration-200 bg-transparent rounded-lg hover:bg-white/10 mb-4 font-semibold flex justify-between items-center text-white"
             >
-              Dashboard
+              <p>Dashboard</p>
+              {router.pathname == "/" && <FaChevronLeft size={20} />}
             </button>
           </Link>
           <Link href="/schedule">
-            <div className="cursor-pointer w-full p-2 duration-200 bg-transparent rounded-lg hover:bg-white/10 mb-6 font-semibold text-white text-start">
+            <button
+              onClick={() => {
+                router.pathname == "/schedule" && setIsOpen(false);
+              }}
+              className="cursor-pointer w-full p-2 duration-200 bg-transparent rounded-lg hover:bg-white/10 mb-6 font-semibold flex justify-between items-center text-white"
+            >
               Schedule
-            </div>
+              {router.pathname == "/schedule" && <FaChevronLeft size={20} />}
+            </button>
           </Link>
           <div className="flex items-center w-full px-2">
             <CgProfile className="w-8 h-8 text-white mr-3" />
@@ -80,15 +91,26 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
         </button>
 
         <Link href="/">
-          <div className="cursor-pointer w-full p-2 duration-200 bg-transparent rounded-lg hover:bg-white/10 mb-4 font-semibold text-white text-start">
-            Dashboard
-          </div>
+          <button
+            onClick={() => {
+              router.pathname == "/" && setIsOpen(false);
+            }}
+            className="cursor-pointer w-full p-2 duration-200 bg-transparent rounded-lg hover:bg-white/10 mb-4 font-semibold flex justify-between items-center text-white"
+          >
+            <p>Dashboard</p>
+            {router.pathname == "/" && <FaChevronLeft size={20} />}
+          </button>
         </Link>
-
         <Link href="/schedule">
-          <div className="cursor-pointer w-full p-2 duration-200 bg-transparent rounded-lg hover:bg-white/10 mb-6 font-semibold text-white text-start">
+          <button
+            onClick={() => {
+              router.pathname == "/schedule" && setIsOpen(false);
+            }}
+            className="cursor-pointer w-full p-2 duration-200 bg-transparent rounded-lg hover:bg-white/10 mb-6 font-semibold flex justify-between items-center text-white"
+          >
             Schedule
-          </div>
+            {router.pathname == "/schedule" && <FaChevronLeft size={20} />}
+          </button>
         </Link>
 
         <div className="flex items-center w-full px-2">
