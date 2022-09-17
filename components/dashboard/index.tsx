@@ -101,8 +101,6 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
                               contact={contact}
                               setViewing={setIsViewing}
                               setCurrentContact={setCurrentContact}
-                              contacts={contacts}
-                              setContacts={setContacts}
                               key={contact.name}
                             />
                           ))}
