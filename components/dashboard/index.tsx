@@ -9,6 +9,7 @@ import Contact from "./contact";
 import View from "./view";
 
 const circles = ["Friends", "Family", "Acquaintances", "Colleagues"];
+const emojis = ["🤙", "👨‍👩‍👧‍👦", "👋", "💼"];
 interface Props {
   auth: any;
   user: any;
@@ -40,7 +41,7 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
       )}
       <main className="p-4">
         <h1 className="w-full text-center mb-6 text-lg font-bold text-slate-700">
-          Your Circles
+          Your Circles 📨
         </h1>
 
         <button
@@ -56,7 +57,7 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
             {({ open }) => (
               <>
                 <Disclosure.Button className="flex w-full justify-between items-center rounded-lg bg-purple-100 px-4 py-2 text-left text-base font-medium text-slate-700 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-600 focus-visible:ring-opacity-75">
-                  <span>{circle}</span>
+                  <span>{circle} {emojis[i]}</span>
                   <FaChevronUp
                     className={`${
                       open ? "rotate-180 transform" : ""

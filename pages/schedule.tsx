@@ -38,7 +38,11 @@ const Schedule: NextPage = () => {
 
         <Nav user={user} auth={auth} />
 
-        <main className="p-4">yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeessir</main>
+        <main className="p-4">
+            <h1 className="w-full text-center mb-6 text-lg font-bold text-slate-700">
+                Upcoming Connections 🤝
+            </h1>
+        </main>
 
 
 
