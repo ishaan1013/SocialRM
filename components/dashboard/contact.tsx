@@ -39,6 +39,7 @@ const Contact: React.FC<Props> = ({
         <button
           onClick={() => {
             setEditing(true);
+            setCurrentContact(contact);
             setIsCreating(true);
           }}
           className="h-full"

@@ -23,7 +23,13 @@ const Editor: React.FC<Props> = ({
   const circles = ["Friends", "Family", "Acquaintances", "Colleagues"];
 
   const freqs = ["1", "2", "3", "4", "5"];
-  const freqInfo = ["(every 5 mo.)", "(every 2 mo.)", "(every mo.)", "(every 2 weeks)", "(every week)"];
+  const freqInfo = [
+    "(every 5 mo.)",
+    "(every 2 mo.)",
+    "(every mo.)",
+    "(every 2 weeks)",
+    "(every week)",
+  ];
 
   const [name, setName] = useState(edit && contact.name ? contact.name : "");
   const [email, setEmail] = useState(
@@ -185,7 +191,7 @@ const Editor: React.FC<Props> = ({
                         key={freqIdx}
                         className={({ active }) =>
                           `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                            active  
+                            active
                               ? "bg-violet-100 text-violet-900"
                               : "text-slate-700"
                           }`
