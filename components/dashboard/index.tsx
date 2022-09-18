@@ -78,7 +78,7 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
 
         <div className="w-full h-full z-10">
           <h1 className="w-full text-center mb-6 text-lg font-bold text-slate-700">
-            Your Circles 📨
+            Your Circles 🤝
           </h1>
           <button
             className="flex items-center justify-center w-full p-2 duration-200 bg-violet-600 rounded-lg hover:bg-violet-600/80 mb-4 font-bold text-white text-center"
@@ -91,7 +91,7 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
             <Disclosure as="div" className="mt-4 w-full" key={circle}>
               {({ open }) => (
                 <>
-                  <Disclosure.Button className="flex w-full justify-between items-center rounded-lg bg-violet-100 px-4 py-2 text-left text-base font-medium text-slate-700 hover:bg-violet-200 focus:outline-none focus-visible:ring focus-visible:ring-violet-600 focus-visible:ring-opacity-75">
+                  <Disclosure.Button className="duration-200 flex w-full justify-between items-center rounded-lg bg-violet-100 px-4 py-2 text-left text-base font-medium text-slate-700 hover:bg-violet-200 focus:outline-none focus-visible:ring focus-visible:ring-violet-600 focus-visible:ring-opacity-75">
                     <span>
                       {circle} {emojis[i]}
                     </span>
