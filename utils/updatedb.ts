@@ -1,5 +1,7 @@
-import { doc, setDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import { doc, setDoc, deleteDoc, updateDoc, Timestamp } from "firebase/firestore";
 import { db } from "./firebase";
+
+const freqs = [13148730000, 5259492000, 2629746000, 1209600000, 604800000]
 
 export const addContact = async (
   user: any,
@@ -17,6 +19,8 @@ export const addContact = async (
     tone: tone,
     freq: freq,
     intention: intention,
+    current: Timestamp.now(),
+    next: Timestamp.fromMillis(Date.now() + freqs[parseInt(freq)-1])
   });
 };
 
