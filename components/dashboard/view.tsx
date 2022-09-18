@@ -67,8 +67,10 @@ const View: React.FC<Props> = ({ user, contact, setIsOpen }) => {
             className="flex items-center mt-1.5 mb-1.5 w-2/3 sm:w-1/2 md:w-1/3 xl:w-1/4 justify-between"
             key={label}
           >
-            <p className="text-slate-600 text-sm font-normal">{label}</p>
-            <p className="text-slate-600 font-bold ml-6">{value}</p>
+            <p className="text-left text-slate-600 text-sm font-normal">
+              {label}
+            </p>
+            <p className="text-right text-slate-600 font-bold ml-6">{value}</p>
           </div>
         ))}
         <div className="my-6 flex flex-col justify-start items-center w-3/4 sm:w-2/3 md:w-1/2 xl:w-1/4">
