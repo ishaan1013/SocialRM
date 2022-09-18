@@ -30,20 +30,19 @@ const Editor: React.FC<Props> = ({ setIsOpen, user, edit, contact }) => {
 
   const [invalid, setInvalid] = useState(false);
   const [emailInvalid, setEmailInvalid] = useState(false);
+  const [lengthInvalid, setLengthInvalid] = useState(false);
 
   const validateForm = () => {
     const emptyTest = name === "" || email === "";
-    if (emptyTest) {
-      setInvalid(true);
-    } else {
-      setInvalid(false);
-    }
+    setInvalid(emptyTest);
     const emailTest = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
-    if (!emailTest) {
-      setEmailInvalid(true);
-    } else {
-      setEmailInvalid(false);
-    }
+    setEmailInvalid(!emailTest);
+    setLengthInvalid(
+      name.length > 30 ||
+        email.length > 35 ||
+        tone.length > 30 ||
+        intention.length > 40
+    );
     return !emptyTest && emailTest;
   };
 
@@ -219,7 +218,7 @@ const Editor: React.FC<Props> = ({ setIsOpen, user, edit, contact }) => {
                 setIsOpen(false);
               }
             }}
-            className="col-span-2 mt-3 flex items-center justify-center w-full p-2 duration-200 bg-purple-600 rounded-lg hover:bg-purple-600/80 mb-4 font-bold text-white text-center"
+            className="col-span-2 my-3 flex items-center justify-center w-full p-2 duration-200 bg-purple-600 rounded-lg hover:bg-purple-600/80 font-bold text-white text-center"
           >
             {edit ? (
               <>
@@ -233,16 +232,23 @@ const Editor: React.FC<Props> = ({ setIsOpen, user, edit, contact }) => {
               </>
             )}
           </button>
-          {invalid && (
-            <p className="col-span-2 w-full text-center font-bold text-red-500">
-              Please fill out all the fields.
-            </p>
-          )}
-          {emailInvalid && (
-            <p className="col-span-2 w-full text-center font-bold text-red-500">
-              Please enter a valid email.
-            </p>
-          )}
+          <div className="w-[90vw]">
+            {invalid && (
+              <p className="col-span-2 w-full text-center font-bold text-red-500">
+                Please fill out all the fields.
+              </p>
+            )}
+            {emailInvalid && (
+              <p className="col-span-2 w-full text-center font-bold text-red-500">
+                Please enter a valid email.
+              </p>
+            )}
+            {lengthInvalid && (
+              <p className="col-span-2 w-full text-center font-bold text-red-500">
+                Parameters are too long.
+              </p>
+            )}
+          </div>
         </div>
       </main>
     </>
