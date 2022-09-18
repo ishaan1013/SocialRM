@@ -1,4 +1,4 @@
-import type { GetServerSideProps, NextPage } from "next";
+import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import Router from "next/router";
@@ -8,15 +8,15 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig, db } from "../utils/firebase";
 
-import getOnce from "../utils/getOnce"
+import getOnce from "../utils/getOnce";
 
 interface Contact {
-  name: string
-  email: string
-  circle: string
-  tone: string
-  freq: string
-  current: any
+  name: string;
+  email: string;
+  circle: string;
+  tone: string;
+  freq: string;
+  current: any;
 }
 
 const Schedule: NextPage = () => {
@@ -24,29 +24,30 @@ const Schedule: NextPage = () => {
   const [contacts, setContacts] = useState<any>(null);
 
   const app = initializeApp(firebaseConfig);
-  const auth = getAuth()
+  const auth = getAuth();
 
-  const freqs = ["every 5 months", "every 2 months", "every month", "every 2 weeks", "every week"]
+  const freqs = [
+    "every 5 months",
+    "every 2 months",
+    "every month",
+    "every 2 weeks",
+    "every week",
+  ];
 
   useEffect(() => {
-
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
         if (user.email) {
           getOnce(user.email).then((res) => {
-            setContacts(res)
-            // console.log("res", res)
-            // console.log(res[0].current.toDate())
-          })
+            setContacts(res);
+          });
         }
       } else {
         setUser(null);
         Router.push("/");
       }
     });
-
-
   }, []);
 
   return (
@@ -65,26 +66,43 @@ const Schedule: NextPage = () => {
           Upcoming Connections 📨
         </h1>
 
-        {
-          contacts ? 
-          contacts.map((contact: any, i:number) => (
-            <div key={i} className="duration-200 border-2 border-transparent hover:border-violet-300 mb-4 flex w-full justify-between items-center rounded-lg bg-violet-100 px-4 py-3 text-base font-medium text-slate-700">
+        {contacts ? (
+          contacts.map((contact: any, i: number) => (
+            <div
+              key={i}
+              className="duration-200 border-2 border-transparent hover:border-violet-300 mb-4 flex w-full justify-between items-center rounded-lg bg-violet-100 px-4 py-3 text-base font-medium text-slate-700"
+            >
               <div>
-                <p className="font-bold text-base text-slate-600">{contact.name}</p>
-                <p className="font-medium text-[0.72rem] text-slate-500 -mb-1 sm:hidden">{(contact.email.length > 16) ? contact.email.slice(0, 16-1) + '...' : contact.email}</p>
-                <p className="font-medium text-[0.72rem] text-slate-500 -mb-1 hidden sm:block">{contact.email}</p>
-                <p className="font-medium text-[0.72rem] text-slate-500">{contact.circle}</p>
+                <p className="font-bold text-base text-slate-600">
+                  {contact.name}
+                </p>
+                <p className="font-medium text-[0.72rem] text-slate-500 -mb-1 sm:hidden">
+                  {contact.email.length > 16
+                    ? contact.email.slice(0, 16 - 1) + "..."
+                    : contact.email}
+                </p>
+                <p className="font-medium text-[0.72rem] text-slate-500 -mb-1 hidden sm:block">
+                  {contact.email}
+                </p>
+                <p className="font-medium text-[0.72rem] text-slate-500">
+                  {contact.circle}
+                </p>
               </div>
               <div>
-                <p className="font-bold text-[0.72rem] text-slate-600 -mb-1 w-full text-end">Sending {contact.next.toDate().getDate()}-{contact.next.toDate().getMonth()+1}-{contact.next.toDate().getYear()+1900}</p>
-                <p className="font-bold text-[0.72rem] text-slate-600">Repeats {freqs[contact.freq -1]}</p>
+                <p className="font-bold text-[0.72rem] text-slate-600 -mb-1 w-full text-end">
+                  Sending {contact.next.toDate().getDate()}-
+                  {contact.next.toDate().getMonth() + 1}-
+                  {contact.next.toDate().getYear() + 1900}
+                </p>
+                <p className="font-bold text-[0.72rem] text-slate-600">
+                  Repeats {freqs[contact.freq - 1]}
+                </p>
               </div>
             </div>
           ))
-          :
+        ) : (
           <p>Loading...</p>
-        }
-
+        )}
       </main>
     </div>
   );

@@ -10,7 +10,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { firebaseConfig, db } from "../utils/firebase";
+import { firebaseConfig } from "../utils/firebase";
 
 import Account from "../components/account";
 import Dashboard from "../components/dashboard";

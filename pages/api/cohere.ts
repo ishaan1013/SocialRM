@@ -1,4 +1,3 @@
-// import { COHERE_APIKEY } from "../../apiKey";
 const COHERE_APIKEY = "RpBAWJkgiugEpfLZzEbVOUnB0XJXAkc71B8DbGui";
 
 const cohere = require("cohere-ai");

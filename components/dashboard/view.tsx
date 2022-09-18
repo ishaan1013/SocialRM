@@ -153,6 +153,7 @@ const View: React.FC<Props> = ({
           <button
             onClick={() => {
               updateText(user, contact.email, results[currentMessage]);
+              setIsOpen(false);
             }}
             className="px-3 py-1 duration-200 bg-violet-600 rounded-lg hover:bg-violet-600/80 font-bold text-white text-center"
           >
