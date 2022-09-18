@@ -43,7 +43,6 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
       }
     );
   }, []);
-
   return (
     <>
       <Nav user={user} auth={auth} />
@@ -122,6 +121,9 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
                               setCurrentContact={setCurrentContact}
                               setEditing={setEditing}
                               setIsCreating={setIsCreating}
+                              contacts={contacts}
+                              setContacts={setContacts}
+                              index={index}
                               key={contact.name + String(index)}
                             />
                           ))}
