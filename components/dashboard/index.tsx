@@ -53,13 +53,13 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
           user={user}
           edit={editing}
           contact={currentContact}
+          setEditing={setEditing}
         />
       )}
       {isViewing && (
         <View user={user} contact={currentContact} setIsOpen={setIsViewing} />
       )}
       <main className="p-6 flex flex-col justify-start items-center md:pl-[22rem] sm:pt-8 md:pt-12">
-        
         <div className="sm:hidden fixed bottom-0 opacity-20 h-52">
           <div className="relative w-screen h-full">
             <Image src={Bg1} />
