@@ -27,3 +27,5 @@ SocialRM has been an immense learning process for each of us, and we have a lot 
 Of course, we learned much about and how to work with many new and fascinating technologies, but ultimately we learned that problem solving and overcoming obstacles is an experience better shared with a team. Collaboration and teamwork have been rare opportunities for the past few pandemic years, and we are so excited to be back.
 
 ## What's next for SocialRM
+
+We would like to expand the features of SocialRM to be include more support for relationship features. For example, a wider customizability for circle can make it easier to group and manage messages to certain people. We may also implement support for text messaging aside form the current email messaging, using technologies such as Twilio. We want to make SocialRM as supportive and helpful as possible for everyone's benefit.
