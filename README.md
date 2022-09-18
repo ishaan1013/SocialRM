@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Social RM
 
-## Getting Started
+## Inspiration
 
-First, run the development server:
+Especially after the global COVID pandemic, we have come to realize the importance of staying connected. We all experienced distance in relationships to some extent, and sometimes it...doesn't feel great. We were inspired to build a tool to not only help us maintain, but value and cherish relationships with those we care about.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## What it does
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+SocialRM is a personal relationship management tool that helps us keep in touch with those we might not talk to often. SocialRM automatically creates and sends (with your approval, of course) realistic emails to send to your contacts every once in a while, keeping you in touch.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## How we built it
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+We build SocialRM as a web app using Next.js with Firebase storage for our users. Our UI was carefully crafted in Figma and then brought to life using Tailwind CSS's powerful classes. Our generation technology is powered by Cohere's natural language processing APIs, enabling SocialRM to produce realistic yet customizable chat phrases.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Challenges we ran into
 
-## Learn More
+As this was our first time working with Cohere, it took some research and trial and error before we finally figured out how to maximize the power of Cohere's generation technology. We were on the brink of changing gears halfway through, but fortunately a brief word with Cohere themselves sparked our recovery and success with the final project.
 
-To learn more about Next.js, take a look at the following resources:
+A second challenge we encountered was figuring out exactly how to use Google's Gmail API effectively and efficiently, leading us to eventually develop a separate backend script in Python for this purpose.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Accomplishments that we're proud of
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+SocialRM has been an immense learning process for each of us, and we have a lot to owe to the well organized workshops and sponsor speakers for providing us with such an incredible learning experience. We each dove into technologies we were originally unfamiliar with, ultimately succeeding and producing a project we are all very proud of. We are also very grateful for the opportunity to meet and connect with so many other skilled hackers and mentors here at Hack the North.
 
-## Deploy on Vercel
+## What we learned
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Of course, we learned much about and how to work with many new and fascinating technologies, but ultimately we learned that problem solving and overcoming obstacles is an experience better shared with a team. Collaboration and teamwork have been rare opportunities for the past few pandemic years, and we are so excited to be back.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## What's next for SocialRM
+
+We would like to expand the features of SocialRM to be include more support for relationship features. For example, a wider customizability for circle can make it easier to group and manage messages to certain people. We may also implement support for text messaging aside form the current email messaging, using technologies such as Twilio. We want to make SocialRM as supportive and helpful as possible for everyone's benefit.

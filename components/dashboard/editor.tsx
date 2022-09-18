@@ -10,23 +10,34 @@ interface Props {
   user: any;
   edit: boolean;
   contact: any;
+  setEditing: (val: boolean) => void;
 }
 
-const Editor: React.FC<Props> = ({ setIsOpen, user, edit, contact }) => {
+const Editor: React.FC<Props> = ({
+  setIsOpen,
+  user,
+  edit,
+  contact,
+  setEditing,
+}) => {
   const circles = ["Friends", "Family", "Acquaintances", "Colleagues"];
 
   const freqs = ["1", "2", "3", "4", "5"];
 
-  const [name, setName] = useState(edit ? contact.name : "");
-  const [email, setEmail] = useState(edit ? contact.email : "");
+  const [name, setName] = useState(edit && contact.name ? contact.name : "");
+  const [email, setEmail] = useState(
+    edit && contact.email ? contact.email : ""
+  );
   const [selectedCircle, setSelectedCircle] = useState(
     edit ? contact.circle : circles[0]
   );
-  const [tone, setTone] = useState(edit ? contact.tone : "");
+  const [tone, setTone] = useState(edit && contact.tone ? contact.tone : "");
   const [selectedFreq, setSelectedFreq] = useState(
-    edit ? contact.freq : freqs[0]
+    edit && contact.freq ? contact.freq : freqs[0]
   );
-  const [intention, setIntention] = useState(edit ? contact.intention : "");
+  const [intention, setIntention] = useState(
+    edit && contact.intention ? contact.intention : ""
+  );
 
   const [invalid, setInvalid] = useState(false);
   const [emailInvalid, setEmailInvalid] = useState(false);
@@ -52,7 +63,10 @@ const Editor: React.FC<Props> = ({ setIsOpen, user, edit, contact }) => {
         <header>
           <button
             className="absolute top-6 left-6"
-            onClick={() => setIsOpen(false)}
+            onClick={() => {
+              setIsOpen(false);
+              setEditing(false);
+            }}
           >
             <FaChevronLeft className="w-9 h-9 p-2 rounded-md bg-white hover:bg-white/70 duration-200 text-violet-600" />
           </button>
@@ -216,6 +230,7 @@ const Editor: React.FC<Props> = ({ setIsOpen, user, edit, contact }) => {
                 );
 
                 setIsOpen(false);
+                setEditing(false);
               }
             }}
             className="col-span-2 my-3 flex items-center justify-center w-full p-2 duration-200 bg-violet-600 rounded-lg hover:bg-violet-600/80 font-bold text-white text-center"
