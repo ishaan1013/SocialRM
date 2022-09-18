@@ -4,7 +4,7 @@ import { Listbox, Transition } from "@headlessui/react";
 import { HiSelector } from "react-icons/hi";
 import coGenerate from "../../pages/api/cohere";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
-import { deleteContact } from "../../utils/updatedb";
+import { deleteContact, updateText } from "../../utils/updatedb";
 interface Props {
   user: any;
   contact: any;
@@ -116,7 +116,7 @@ const View: React.FC<Props> = ({ user, contact, setIsOpen }) => {
         </div>
         <button
           onClick={() => {
-            console.log("Send email");
+            updateText(user, contact.email, results[currentMessage]);
           }}
           className="px-3 py-1 duration-200 bg-violet-600 rounded-lg hover:bg-violet-600/80 font-bold text-white text-center"
         >

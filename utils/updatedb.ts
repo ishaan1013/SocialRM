@@ -43,6 +43,16 @@ export const updateContact = async (
   });
 };
 
+export const updateText = async (
+  user: any, 
+  email: string,
+  text: string
+  ) => {
+    await updateDoc(doc(db, "users", user.email, "contacts", email), {
+      text: text
+    });
+}
+
 export const deleteContact = async (user: any, email: any) => {
   await deleteDoc(doc(db, "users", user.email, "contacts", email));
 };
