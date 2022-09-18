@@ -30,6 +30,25 @@ export const addContact = async (
   });
 };
 
+export const updateContact = async (
+  user: any,
+  name: string,
+  email: string,
+  circle: string,
+  tone: string,
+  freq: string,
+  intention: string
+) => {
+  await updateDoc(doc(db, "users", user.email, "contacts", email), {
+    name: name,
+    email: email,
+    circle: circle,
+    tone: tone,
+    freq: freq,
+    intention: intention,
+  });
+};
+
 export const updateText = async (user: any, email: string, text: string) => {
   await updateDoc(doc(db, "users", user.email, "contacts", email), {
     text: text,

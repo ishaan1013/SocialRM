@@ -103,13 +103,15 @@ const View: React.FC<Props> = ({
                 <button
                   className="font-medium text-sm text-slate-600 py-0.5 px-2 rounded-md border-2 border-slate-300 bg-transparent duration-200 hover:border-violet-400"
                   onClick={() =>
-                    setCurrentMessage((currentMessage - 1) % results.length)
+                    setCurrentMessage(
+                      currentMessage > 0 ? currentMessage - 1 : 4
+                    )
                   }
                 >
                   <FaChevronLeft />
                 </button>
                 <p className="font-medium text-sm text-slate-600">
-                  {(currentMessage % results.length) + 1} / 5
+                  {currentMessage + 1} / 5
                 </p>
                 <button
                   className="font-medium text-sm text-slate-600 py-0.5 px-2 rounded-md border-2 border-slate-300 bg-transparent duration-200 hover:border-violet-400"

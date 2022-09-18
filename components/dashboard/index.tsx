@@ -30,19 +30,20 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
   const [editing, setEditing] = useState(false);
 
   useEffect(() => {
-    const unsub = onSnapshot(
+    onSnapshot(
       query(collection(db, "users", user.email, "contacts")),
       (querySnapshot) => {
+        let newContacts: any = [[], [], [], []];
         querySnapshot.forEach((doc) => {
-          // newContacts.push(doc.data())
-          let newContacts = [...contacts];
-          const index = circles.indexOf(doc.data().circle);
-          newContacts[index].push(doc.data());
-          setContacts(newContacts);
+          const data: any = doc.data();
+          const index = circles.indexOf(data.circle);
+          newContacts[index].push(data);
         });
+        setContacts(newContacts);
       }
     );
   }, []);
+
   return (
     <>
       <Nav user={user} auth={auth} />
@@ -116,24 +117,19 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
                       </p>
                     ) : (
                       <div className="pt-2 pb-2">
-                        {contacts[i]
-                          .filter(
-                            (item: any, index: number) =>
-                              index < Math.ceil(contacts[i].length / 2)
-                          )
-                          .map((contact: any, index: any) => (
-                            <Contact
-                              user={user}
-                              contact={contact}
-                              setViewing={setIsViewing}
-                              setCurrentContact={setCurrentContact}
-                              setEditing={setEditing}
-                              setIsCreating={setIsCreating}
-                              contacts={contacts}
-                              setContacts={setContacts}
-                              key={contact.name + String(index)}
-                            />
-                          ))}
+                        {contacts[i].map((contact: any, index: any) => (
+                          <Contact
+                            user={user}
+                            contact={contact}
+                            setViewing={setIsViewing}
+                            setCurrentContact={setCurrentContact}
+                            setEditing={setEditing}
+                            setIsCreating={setIsCreating}
+                            contacts={contacts}
+                            setContacts={setContacts}
+                            key={contact.name + String(index)}
+                          />
+                        ))}
                       </div>
                     )}
                   </Disclosure.Panel>

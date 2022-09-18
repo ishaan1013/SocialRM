@@ -3,7 +3,7 @@ import { FaChevronLeft, FaPlus } from "react-icons/fa";
 import { ImPencil } from "react-icons/im";
 import { Listbox, Transition } from "@headlessui/react";
 import { HiSelector } from "react-icons/hi";
-import { addContact } from "../../utils/updatedb";
+import { addContact, updateContact } from "../../utils/updatedb";
 
 interface Props {
   setIsOpen: (val: boolean) => void;
@@ -230,17 +230,25 @@ const Editor: React.FC<Props> = ({
           <button
             onClick={() => {
               if (validateForm()) {
-                addContact(
-                  user,
-                  name,
-                  email,
-                  selectedCircle,
-                  tone,
-                  selectedFreq,
-                  intention
-                );
-                setIsOpen(false);
-                setEditing(false);
+                edit
+                  ? updateContact(
+                      user,
+                      name,
+                      email,
+                      selectedCircle,
+                      tone,
+                      selectedFreq,
+                      intention
+                    )
+                  : addContact(
+                      user,
+                      name,
+                      email,
+                      selectedCircle,
+                      tone,
+                      selectedFreq,
+                      intention
+                    );
 
                 if (edit) {
                   const newContacts = [...contacts];
@@ -257,6 +265,9 @@ const Editor: React.FC<Props> = ({
                   });
                   setContacts(newContacts);
                 }
+
+                setIsOpen(false);
+                setEditing(false);
               }
             }}
             className="col-span-2 my-3 flex items-center justify-center w-full p-2 duration-200 bg-violet-600 rounded-lg hover:bg-violet-600/80 font-bold text-white text-center"
