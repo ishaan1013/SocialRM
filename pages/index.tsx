@@ -42,13 +42,13 @@ const Home: NextPage = () => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         if (credential) {
           const token = credential.idToken;
-          console.log("token:", token);
+          // console.log("token:", token);
         } else {
           const token = null;
-          console.log("token is null");
+          // console.log("token is null");
         }
         const user = result.user;
-        console.log("user:", user)
+        // console.log("user:", user)
         setUser(user);
       })
       .catch((error) => {
