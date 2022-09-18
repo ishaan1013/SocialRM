@@ -54,7 +54,7 @@ const Editor: React.FC<Props> = ({ setIsOpen, user, edit, contact }) => {
             className="absolute top-6 left-6"
             onClick={() => setIsOpen(false)}
           >
-            <FaChevronLeft className="w-9 h-9 p-2 rounded-md bg-white hover:bg-white/70 duration-200 text-purple-600" />
+            <FaChevronLeft className="w-9 h-9 p-2 rounded-md bg-white hover:bg-white/70 duration-200 text-violet-600" />
           </button>
 
           <h1 className="text-lg font-bold text-slate-700">
@@ -70,7 +70,7 @@ const Editor: React.FC<Props> = ({ setIsOpen, user, edit, contact }) => {
               onChange={(event: any) => setName(event.target.value)}
               placeholder="Bob"
               value={name}
-              className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
+              className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-violet-600"
             />
           </div>
           <div className="col-span-1">
@@ -81,7 +81,7 @@ const Editor: React.FC<Props> = ({ setIsOpen, user, edit, contact }) => {
               onChange={(event: any) => setEmail(event.target.value)}
               placeholder="bob@example.com"
               value={email}
-              className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
+              className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-violet-600"
             />
           </div>
           <div className="col-span-2">
@@ -90,7 +90,7 @@ const Editor: React.FC<Props> = ({ setIsOpen, user, edit, contact }) => {
             </label>
             <Listbox value={selectedCircle} onChange={setSelectedCircle}>
               <div className="relative mt-1 w-full">
-                <Listbox.Button className="relative w-full cursor-default bg-white/75 border-2 rounded-md border-slate-300 py-2 pl-3 pr-10 text-left focus:outline-none focus:ring-2 focus:ring-purple-600 text-sm md:text-base">
+                <Listbox.Button className="relative w-full cursor-default bg-white/75 border-2 rounded-md border-slate-300 py-2 pl-3 pr-10 text-left focus:outline-none focus:ring-2 focus:ring-violet-600 text-sm md:text-base">
                   <span className="block truncate">{selectedCircle}</span>
                   <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                     <HiSelector
@@ -112,7 +112,7 @@ const Editor: React.FC<Props> = ({ setIsOpen, user, edit, contact }) => {
                         className={({ active }) =>
                           `relative cursor-default select-none py-2 pl-10 pr-4 ${
                             active
-                              ? "bg-purple-100 text-purple-900"
+                              ? "bg-violet-100 text-violet-900"
                               : "text-slate-700"
                           }`
                         }
@@ -140,7 +140,7 @@ const Editor: React.FC<Props> = ({ setIsOpen, user, edit, contact }) => {
               onChange={(event: any) => setTone(event.target.value)}
               placeholder="e.g. caring, formal"
               value={tone}
-              className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
+              className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-violet-600"
             />
           </div>
           <div className="col-span-1">
@@ -149,7 +149,7 @@ const Editor: React.FC<Props> = ({ setIsOpen, user, edit, contact }) => {
             </label>
             <Listbox value={selectedFreq} onChange={setSelectedFreq}>
               <div className="relative w-full">
-                <Listbox.Button className="relative w-full cursor-default bg-white/75 border-2 rounded-md border-slate-300 py-2 pl-3 pr-10 text-left focus:outline-none focus:ring-2 focus:ring-purple-600 text-sm md:text-base">
+                <Listbox.Button className="relative w-full cursor-default bg-white/75 border-2 rounded-md border-slate-300 py-2 pl-3 pr-10 text-left focus:outline-none focus:ring-2 focus:ring-violet-600 text-sm md:text-base">
                   <span className="block truncate">{selectedFreq}</span>
                   <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                     <HiSelector
@@ -171,7 +171,7 @@ const Editor: React.FC<Props> = ({ setIsOpen, user, edit, contact }) => {
                         className={({ active }) =>
                           `relative cursor-default select-none py-2 pl-10 pr-4 ${
                             active
-                              ? "bg-purple-100 text-purple-900"
+                              ? "bg-violet-100 text-violet-900"
                               : "text-slate-700"
                           }`
                         }
@@ -199,7 +199,7 @@ const Editor: React.FC<Props> = ({ setIsOpen, user, edit, contact }) => {
               onChange={(event: any) => setIntention(event.target.value)}
               placeholder="e.g. coffee chat, hang out"
               value={intention}
-              className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
+              className="text-slate-600 text-sm md:text-base w-full p-2 bg-white/75 border-2 rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-violet-600"
             />
           </div>
           <button
@@ -218,7 +218,7 @@ const Editor: React.FC<Props> = ({ setIsOpen, user, edit, contact }) => {
                 setIsOpen(false);
               }
             }}
-            className="col-span-2 my-3 flex items-center justify-center w-full p-2 duration-200 bg-purple-600 rounded-lg hover:bg-purple-600/80 font-bold text-white text-center"
+            className="col-span-2 my-3 flex items-center justify-center w-full p-2 duration-200 bg-violet-600 rounded-lg hover:bg-violet-600/80 font-bold text-white text-center"
           >
             {edit ? (
               <>

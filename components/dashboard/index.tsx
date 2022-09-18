@@ -11,7 +11,9 @@ import Contact from "./contact";
 import View from "./view";
 
 import Image from "next/image";
-import Bg from "../../public/graphic1.svg";
+import Bg1 from "../../public/bggraphic1.svg";
+import Bg2 from "../../public/circles.svg";
+import Bg3 from "../../public/dots.svg";
 
 const circles = ["Friends", "Family", "Acquaintances", "Colleagues"];
 const emojis = ["🤙", "👨‍👩‍👧‍👦", "👋", "💼"];
@@ -57,9 +59,20 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
         <View user={user} contact={currentContact} setIsOpen={setIsViewing} />
       )}
       <main className="p-6 flex flex-col justify-start items-center md:pl-[22rem] sm:pt-8 md:pt-12">
-        <div className="fixed bottom-0 opacity-20">
-          <div className="relative w-[310px] h-[230px]">
-            <Image src={Bg} />
+        
+        <div className="sm:hidden fixed bottom-0 opacity-20 h-52">
+          <div className="relative w-screen h-full">
+            <Image src={Bg1} />
+          </div>
+        </div>
+        <div className="sm:hidden fixed -bottom-60 translate-x-48 sm:translate-x-56 md:translate-x-72 opacity-10">
+          <div className="relative w-[300px] h-[300px]">
+            <Image src={Bg2} />
+          </div>
+        </div>
+        <div className="sm:hidden fixed -bottom-60 -translate-x-8 sm:translate-x-12 md:translate-x-30 opacity-30">
+          <div className="relative w-[300px] h-[300px]">
+            <Image src={Bg3} />
           </div>
         </div>
 
@@ -68,7 +81,7 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
             Your Circles 📨
           </h1>
           <button
-            className="flex items-center justify-center w-full p-2 duration-200 bg-purple-600 rounded-lg hover:bg-purple-600/80 mb-4 font-bold text-white text-center"
+            className="flex items-center justify-center w-full p-2 duration-200 bg-violet-600 rounded-lg hover:bg-violet-600/80 mb-4 font-bold text-white text-center"
             onClick={() => setIsCreating(true)}
           >
             <FaPlus className="w-4 h-4 mr-2" />
@@ -78,19 +91,19 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
             <Disclosure as="div" className="mt-4 w-full" key={circle}>
               {({ open }) => (
                 <>
-                  <Disclosure.Button className="flex w-full justify-between items-center rounded-lg bg-purple-100 px-4 py-2 text-left text-base font-medium text-slate-700 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-600 focus-visible:ring-opacity-75">
+                  <Disclosure.Button className="flex w-full justify-between items-center rounded-lg bg-violet-100 px-4 py-2 text-left text-base font-medium text-slate-700 hover:bg-violet-200 focus:outline-none focus-visible:ring focus-visible:ring-violet-600 focus-visible:ring-opacity-75">
                     <span>
                       {circle} {emojis[i]}
                     </span>
                     <FaChevronUp
                       className={`${
-                        open ? "rotate-180 transform" : ""
-                      } h-4 w-4 text-purple-600`}
+                        open ? "" : "rotate-180 transform"
+                      } h-4 w-4 text-violet-600`}
                     />
                   </Disclosure.Button>
                   <Disclosure.Panel>
                     {!contacts[i].length ? (
-                      <p className="text-center pt-4 text-gray-500">
+                      <p className="text-center mt-3 text-sm font-medium text-slate-400">
                         No contacts yet
                       </p>
                     ) : (

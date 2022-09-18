@@ -22,11 +22,11 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
           <h1 className="font-bold text-lg cursor-pointer">SocialRM</h1>
         </Link>
         <button onClick={() => setIsOpen(true)}>
-          <IoMenu className="w-9 h-9 p-2 rounded-lg bg-purple-200 hover:bg-purple-300/80 duration-200 text-slate-700" />
+          <IoMenu className="w-9 h-9 p-2 rounded-lg bg-violet-200 hover:bg-violet-300/80 duration-200 text-slate-700" />
         </button>
       </header>
       {isOpen && (
-        <nav className="md:hidden h-screen w-screen fixed top-0 left-0 flex flex-col justify-start pt-24 px-6 bg-gradient-to-br from-purple-700 to-purple-500 z-50">
+        <nav className="md:hidden h-screen w-screen fixed top-0 left-0 flex flex-col justify-start pt-24 px-6 bg-gradient-to-br from-violet-700 to-violet-500 z-50">
           <button
             className="absolute top-6 right-6"
             onClick={() => setIsOpen(false)}
@@ -67,7 +67,7 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
             </div>
           </div>
           <button
-            className="w-full p-2 duration-200 bg-white rounded-lg hover:bg-purple-100/90 mt-12 font-bold text-purple-600 text-center"
+            className="w-full p-2 duration-200 bg-white rounded-lg hover:bg-violet-100/90 mt-12 font-bold text-violet-600 text-center"
             onClick={() => signOutFunc(auth)}
           >
             Sign Out
@@ -76,7 +76,7 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
       )}
 
       {/* computer size below */}
-      <nav className="hidden md:flex h-screen w-80 fixed top-0 left-0 flex-col justify-start pt-24 px-6 bg-gradient-to-br from-purple-700 to-purple-500 z-50">
+      <nav className="hidden md:flex h-screen w-80 fixed top-0 left-0 flex-col justify-start pt-24 px-6 bg-gradient-to-br from-violet-700 to-violet-500 z-50">
         <h1 className="absolute top-7 left-6 font-bold text-[1.35rem]  text-white">
           SocialRM
         </h1>
@@ -117,7 +117,7 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
         </div>
 
         <button
-          className="w-full p-2 duration-200 bg-white rounded-lg hover:bg-purple-100/90 mt-12 font-bold text-purple-600 text-center"
+          className="w-full p-2 duration-200 bg-white rounded-lg hover:bg-violet-100/90 mt-12 font-bold text-violet-600 text-center"
           onClick={() => signOutFunc(auth)}
         >
           Sign Out

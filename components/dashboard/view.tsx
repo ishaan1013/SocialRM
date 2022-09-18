@@ -40,7 +40,7 @@ const View: React.FC<Props> = ({ user, contact, setIsOpen }) => {
           className="absolute top-6 left-6"
           onClick={() => setIsOpen(false)}
         >
-          <FaChevronLeft className="w-9 h-9 p-2 rounded-md bg-white hover:bg-white/70 duration-200 text-purple-600" />
+          <FaChevronLeft className="w-9 h-9 p-2 rounded-md bg-white hover:bg-white/70 duration-200 text-violet-600" />
         </button>
         <button
           className="absolute top-6 right-6"
@@ -75,14 +75,14 @@ const View: React.FC<Props> = ({ user, contact, setIsOpen }) => {
         ))}
         <div className="my-6 flex flex-col justify-start items-center w-3/4 sm:w-2/3 md:w-1/2 xl:w-1/4">
           <textarea
-            className="w-full min-h-[125px] max-h-[250px] resize-y rounded-md p-2 border-2 border-slate-300 focus:outline-none focus-visible:ring focus-visible:ring-purple-600 focus-visible:ring-opacity-75"
+            className="w-full min-h-[125px] max-h-[250px] resize-y rounded-md p-2 border-2 border-slate-300 focus:outline-none focus-visible:ring focus-visible:ring-violet-600 focus-visible:ring-opacity-75"
             value={results[currentMessage]}
           />
           <div className="w-full justify-center space-x-4 flex items-center px-1 mt-3">
             {results.length > 0 ? (
               <>
                 <button
-                  className="font-medium text-sm text-slate-600 py-0.5 px-2 rounded-md border-2 border-slate-300 bg-transparent duration-200 hover:border-purple-400"
+                  className="font-medium text-sm text-slate-600 py-0.5 px-2 rounded-md border-2 border-slate-300 bg-transparent duration-200 hover:border-violet-400"
                   onClick={() =>
                     setCurrentMessage((currentMessage - 1) % results.length)
                   }
@@ -93,7 +93,7 @@ const View: React.FC<Props> = ({ user, contact, setIsOpen }) => {
                   {(currentMessage % results.length) + 1} / 5
                 </p>
                 <button
-                  className="font-medium text-sm text-slate-600 py-0.5 px-2 rounded-md border-2 border-slate-300 bg-transparent duration-200 hover:border-purple-400"
+                  className="font-medium text-sm text-slate-600 py-0.5 px-2 rounded-md border-2 border-slate-300 bg-transparent duration-200 hover:border-violet-400"
                   onClick={() =>
                     setCurrentMessage((currentMessage + 1) % results.length)
                   }
@@ -118,7 +118,7 @@ const View: React.FC<Props> = ({ user, contact, setIsOpen }) => {
           onClick={() => {
             console.log("Send email");
           }}
-          className="px-3 py-1 duration-200 bg-purple-600 rounded-lg hover:bg-purple-600/80 font-bold text-white text-center"
+          className="px-3 py-1 duration-200 bg-violet-600 rounded-lg hover:bg-violet-600/80 font-bold text-white text-center"
         >
           Select!
         </button>

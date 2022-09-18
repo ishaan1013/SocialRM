@@ -68,7 +68,7 @@ const Schedule: NextPage = () => {
         {
           contacts ? 
           contacts.map((contact: any, i:number) => (
-            <div key={i} className="mb-4 flex w-full justify-between items-center rounded-lg bg-purple-100 px-4 py-3 text-base font-medium text-slate-700 hover:bg-purple-200">
+            <div key={i} className="mb-4 flex w-full justify-between items-center rounded-lg bg-violet-100 px-4 py-3 text-base font-medium text-slate-700 hover:bg-violet-200">
               <div>
                 <p className="font-bold text-base text-slate-600">{contact.name}</p>
                 <p className="font-medium text-[0.72rem] text-slate-500 -mb-1">{(contact.email.length > 16) ? contact.email.slice(0, 16-1) + '...' : contact.email}</p>
