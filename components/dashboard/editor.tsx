@@ -241,19 +241,22 @@ const Editor: React.FC<Props> = ({
                 );
                 setIsOpen(false);
                 setEditing(false);
-                const newContacts = [...contacts];
-                newContacts[circles.indexOf(contact.circle)] = newContacts[
-                  circles.indexOf(contact.circle)
-                ].filter((c: any) => c.email !== contact.email);
-                newContacts[circles.indexOf(selectedCircle)].push({
-                  name,
-                  email,
-                  circle: selectedCircle,
-                  tone,
-                  freq: selectedFreq,
-                  intention,
-                });
-                setContacts(newContacts);
+
+                if (edit) {
+                  const newContacts = [...contacts];
+                  newContacts[circles.indexOf(contact.circle)] = newContacts[
+                    circles.indexOf(contact.circle)
+                  ].filter((c: any) => c.email !== contact.email);
+                  newContacts[circles.indexOf(selectedCircle)].push({
+                    name,
+                    email,
+                    circle: selectedCircle,
+                    tone,
+                    freq: selectedFreq,
+                    intention,
+                  });
+                  setContacts(newContacts);
+                }
               }
             }}
             className="col-span-2 my-3 flex items-center justify-center w-full p-2 duration-200 bg-violet-600 rounded-lg hover:bg-violet-600/80 font-bold text-white text-center"

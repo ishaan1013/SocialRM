@@ -68,17 +68,17 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
       )}
 
       <main className="p-6 flex flex-col justify-start items-center md:pl-[22rem] sm:pt-8 md:pt-12">
-        <div className=" fixed bottom-0 opacity-20 h-52">
+        <div className=" fixed bottom-0 md:bottom-12 xl:bottom-24 opacity-20 h-52 scale-100 md:scale-110 xl:scale-[1.2]">
           <div className="relative w-screen h-full">
             <Image src={Bg1} />
           </div>
         </div>
-        <div className=" fixed -bottom-60 translate-x-48 sm:translate-x-56 md:translate-x-72 opacity-10">
+        <div className=" fixed -bottom-60 sm:-bottom-52 lg:-bottom-48 translate-x-48 sm:translate-x-64 md:translate-x-96 opacity-10 scale-100 md:scale-110 xl:scale-[1.2]">
           <div className="relative w-[300px] h-[300px]">
             <Image src={Bg2} />
           </div>
         </div>
-        <div className=" fixed -bottom-60 -translate-x-8 sm:translate-x-12 md:translate-x-30 opacity-30">
+        <div className=" fixed -bottom-60 sm:-bottom-52 lg:-bottom-48 -translate-x-8 sm:translate-x-24 md:translate-x-36 opacity-30 scale-100 md:scale-110 xl:scale-[1.2]">
           <div className="relative w-[300px] h-[300px]">
             <Image src={Bg3} />
           </div>

@@ -36,8 +36,8 @@ const Schedule: NextPage = () => {
         if (user.email) {
           getOnce(user.email).then((res) => {
             setContacts(res)
-            console.log("res", res)
-            console.log(res[0].current.toDate())
+            // console.log("res", res)
+            // console.log(res[0].current.toDate())
           })
         }
       } else {
