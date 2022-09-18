@@ -53,6 +53,8 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
           edit={editing}
           contact={currentContact}
           setEditing={setEditing}
+          contacts={contacts}
+          setContacts={setContacts}
         />
       )}
       {isViewing && (
