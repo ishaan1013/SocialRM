@@ -120,7 +120,7 @@ const View: React.FC<Props> = ({ user, contact, setIsOpen }) => {
           }}
           className="px-3 py-1 duration-200 bg-purple-600 rounded-lg hover:bg-purple-600/80 font-bold text-white text-center"
         >
-          Activate!
+          Select!
         </button>
       </main>
     </>
