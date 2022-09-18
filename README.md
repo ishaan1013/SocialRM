@@ -12,6 +12,8 @@ SocialRM is a personal relationship management tool that helps us keep in touch 
 
 We build SocialRM as a web app using Next.js, Firestore and Firebase Auth. Our UI was carefully crafted in Figma and then brought to life using Tailwind CSS. Our generation AI is powered by Cohere's natural language processing APIs, enabling SocialRM to produce realistic yet customizable chat phrases. Finally, we send your amazing messages with Flask, Python, and google's Gmail API. Through streamlined OAuth2, the entire process is *unbelievably quick and easy*.
 
+![Mobile and laptop mockup of our home screen](https://raw.githubusercontent.com/ishaan1013/socialrm/main/public/socialrm1.jpg)
+
 ## Challenges we ran into
 
 As this was our first time working with Cohere, it took extensive research and trial and error before we finally figured out how to maximize the power of Cohere's generation technology. We were on the brink of changing gears halfway through, but fortunately a brief word with *Cohere themselves* sparked our imaginations and success with the final project.
