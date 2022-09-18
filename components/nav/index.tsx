@@ -36,11 +36,11 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
       {isOpen && (
         <nav className="md:hidden h-screen w-screen fixed top-0 left-0 flex flex-col justify-start pt-24 px-6 bg-gradient-to-br from-violet-700 to-violet-500 z-50">
           
-          <div className="absolute bottom-4 left-2">
-            <div className="relative w-96 h-96">
-              <Image src={Lines} />
-            </div>
+        <div className="absolute -bottom-8 left-4 opacity-30">
+          <div className="relative w-48 h-48">
+            <Image src={Lines} layout="fill" />
           </div>
+        </div>
           
           <button
             className="absolute top-6 right-6"

@@ -11,7 +11,6 @@ import Contact from "./contact";
 import View from "./view";
 
 import Image from "next/image";
-import Bg1 from "../../public/bggraphic1.svg";
 import Bg2 from "../../public/circles.svg";
 import Bg3 from "../../public/dots.svg";
 
@@ -59,18 +58,19 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
       {isViewing && (
         <View user={user} contact={currentContact} setIsOpen={setIsViewing} />
       )}
+
       <main className="p-6 flex flex-col justify-start items-center md:pl-[22rem] sm:pt-8 md:pt-12">
-        <div className="sm:hidden fixed bottom-0 opacity-20 h-52">
+        <div className=" fixed bottom-0 opacity-20 h-52">
           <div className="relative w-screen h-full">
             <Image src={Bg1} />
           </div>
         </div>
-        <div className="sm:hidden fixed -bottom-60 translate-x-48 sm:translate-x-56 md:translate-x-72 opacity-10">
+        <div className=" fixed -bottom-60 translate-x-48 sm:translate-x-56 md:translate-x-72 opacity-10">
           <div className="relative w-[300px] h-[300px]">
             <Image src={Bg2} />
           </div>
         </div>
-        <div className="sm:hidden fixed -bottom-60 -translate-x-8 sm:translate-x-12 md:translate-x-30 opacity-30">
+        <div className=" fixed -bottom-60 -translate-x-8 sm:translate-x-12 md:translate-x-30 opacity-30">
           <div className="relative w-[300px] h-[300px]">
             <Image src={Bg3} />
           </div>
