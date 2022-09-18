@@ -67,15 +67,15 @@ const Schedule: NextPage = () => {
 
         {
           contacts ? 
-          contacts.map((contact: any) => (
-            <div className="mb-4 flex w-full justify-between items-center rounded-lg bg-purple-100 px-4 py-3 text-base font-medium text-slate-700 hover:bg-purple-200">
+          contacts.map((contact: any, i:number) => (
+            <div key={i} className="mb-4 flex w-full justify-between items-center rounded-lg bg-purple-100 px-4 py-3 text-base font-medium text-slate-700 hover:bg-purple-200">
               <div>
                 <p className="font-bold text-base text-slate-600">{contact.name}</p>
                 <p className="font-medium text-[0.72rem] text-slate-500 -mb-1">{(contact.email.length > 16) ? contact.email.slice(0, 16-1) + '...' : contact.email}</p>
                 <p className="font-medium text-[0.72rem] text-slate-500">{contact.circle}</p>
               </div>
               <div>
-                <p className="font-bold text-[0.72rem] text-slate-600 -mb-1 w-full text-end">Sending {contact.next.toDate().getDate()}-{contact.next.toDate().getMonth()}-{contact.next.toDate().getYear()+1900}</p>
+                <p className="font-bold text-[0.72rem] text-slate-600 -mb-1 w-full text-end">Sending {contact.next.toDate().getDate()}-{contact.next.toDate().getMonth()+1}-{contact.next.toDate().getYear()+1900}</p>
                 <p className="font-bold text-[0.72rem] text-slate-600">Repeats {freqs[contact.freq -1]}</p>
               </div>
             </div>
