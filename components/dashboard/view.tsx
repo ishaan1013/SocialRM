@@ -1,17 +1,25 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight, FaTrash } from "react-icons/fa";
-import { Listbox, Transition } from "@headlessui/react";
-import { HiSelector } from "react-icons/hi";
 import coGenerate from "../../pages/api/cohere";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { deleteContact, updateText } from "../../utils/updatedb";
+
+const circles = ["Friends", "Family", "Acquaintances", "Colleagues"];
 interface Props {
   user: any;
   contact: any;
   setIsOpen: (val: boolean) => void;
+  contacts: any;
+  setContacts: (val: any) => void;
 }
 
-const View: React.FC<Props> = ({ user, contact, setIsOpen }) => {
+const View: React.FC<Props> = ({
+  user,
+  contact,
+  setIsOpen,
+  contacts,
+  setContacts,
+}) => {
   const [results, setResults] = useState([]);
   const [currentMessage, setCurrentMessage] = useState(0);
   const { width } = useWindowDimensions();
@@ -47,6 +55,11 @@ const View: React.FC<Props> = ({ user, contact, setIsOpen }) => {
           onClick={() => {
             setIsOpen(false);
             deleteContact(user, contact.email);
+            const newContacts = [...contacts];
+            newContacts[circles.indexOf(contact.circle)] = newContacts[
+              circles.indexOf(contact.circle)
+            ].filter((c: any) => c.email !== contact.email);
+            setContacts(newContacts);
           }}
         >
           <FaTrash className="w-9 h-9 p-2.5 rounded-md bg-red-100 hover:bg-red-200/70 duration-200 text-red-500" />
