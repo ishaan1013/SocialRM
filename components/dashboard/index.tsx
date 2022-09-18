@@ -56,7 +56,13 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
         />
       )}
       {isViewing && (
-        <View user={user} contact={currentContact} setIsOpen={setIsViewing} />
+        <View
+          user={user}
+          contact={currentContact}
+          setIsOpen={setIsViewing}
+          contacts={contacts}
+          setContacts={setContacts}
+        />
       )}
 
       <main className="p-6 flex flex-col justify-start items-center md:pl-[22rem] sm:pt-8 md:pt-12">
@@ -123,7 +129,6 @@ const Dashboard: React.FC<Props> = ({ auth, user }) => {
                               setIsCreating={setIsCreating}
                               contacts={contacts}
                               setContacts={setContacts}
-                              index={index}
                               key={contact.name + String(index)}
                             />
                           ))}
