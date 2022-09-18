@@ -40,7 +40,7 @@ Email: Hi ${name}, I'm so sorry, but I won't be able to make it to the event. I 
 Command: Caringly ask ${name} how they're doing.
 Email: Hey ${name}, I hope you're doing well. I've been thinking about you, and wanted to check in. How is everything?
 --
-Command: Enthusiastically wish ${name} a happy birthday.
+Command: Excitedly wish ${name} a happy birthday.
 Email: Hey ${name}, happy birthday! I hope you have the best day! 
 --
 Command: Kindly wish ${name} a happy holidays.

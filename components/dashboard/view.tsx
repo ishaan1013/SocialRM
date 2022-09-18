@@ -127,14 +127,32 @@ const View: React.FC<Props> = ({
             )}
           </div>
         </div>
-        <button
-          onClick={() => {
-            updateText(user, contact.email, results[currentMessage]);
-          }}
-          className="px-3 py-1 duration-200 bg-violet-600 rounded-lg hover:bg-violet-600/80 font-bold text-white text-center"
-        >
-          Select!
-        </button>
+        <div className="w-full flex justify-evenly items-center">
+          <button
+            className="px-3 py-1 duration-200 bg-violet-600 rounded-lg hover:bg-violet-600/80 font-bold text-white text-center"
+            onClick={() => {
+              setResults([]);
+              coGenerate(
+                user.displayName,
+                contact.name,
+                contact.tone,
+                contact.intention
+              ).then((res: any) => {
+                setResults(res);
+              });
+            }}
+          >
+            Re-gen
+          </button>
+          <button
+            onClick={() => {
+              updateText(user, contact.email, results[currentMessage]);
+            }}
+            className="px-3 py-1 duration-200 bg-violet-600 rounded-lg hover:bg-violet-600/80 font-bold text-white text-center"
+          >
+            Select!
+          </button>
+        </div>
       </main>
     </>
   );
