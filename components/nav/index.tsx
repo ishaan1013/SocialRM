@@ -9,6 +9,8 @@ import { signOutFunc } from "../../pages/index";
 
 import Lines from "../../public/lines1.svg"
 import Image from "next/image";
+import WhiteLogo from "../../public/whitelogo.svg"
+import PurpleLogo from "../../public/purplelogo.svg"
 
 interface Props {
   user: any;
@@ -22,7 +24,10 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
     <>
       <header className="md:hidden w-full p-4 border-b-[1px] border-slate-200 flex justify-between items-center text-slate-700">
         <Link href="/">
-          <h1 className="font-bold text-lg cursor-pointer">SocialRM</h1>
+          {/* <h1 className="font-bold text-lg cursor-pointer">SocialRM</h1> */}
+          <div className="relative h-[40px] w-[135px] sm:h-[50px] sm:w-[180px]">
+            <Image src={PurpleLogo} height={50} width={180} />
+          </div>
         </Link>
         <button onClick={() => setIsOpen(true)}>
           <IoMenu className="w-9 h-9 p-2 rounded-lg bg-violet-200 hover:bg-violet-300/80 duration-200 text-slate-700" />
@@ -92,9 +97,14 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
           </div>
         </div>
         
-        <h1 className="absolute top-7 left-6 font-bold text-[1.35rem]  text-white">
+        {/* <h1 className="absolute top-7 left-6 font-bold text-[1.35rem]  text-white">
           SocialRM
-        </h1>
+        </h1> */}
+        <div className="absolute top-7 left-6">
+          <div className="relative h-[40px] w-[135px] sm:h-[50px] sm:w-[180px]">
+            <Image src={WhiteLogo} height={50} width={180} />
+          </div>
+        </div>
 
         <Link href="/">
           <button
