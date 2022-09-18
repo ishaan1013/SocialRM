@@ -11,6 +11,7 @@ import Contact from "./contact";
 import View from "./view";
 
 import Image from "next/image";
+import Bg1 from "../../public/wave.svg";
 import Bg2 from "../../public/circles.svg";
 import Bg3 from "../../public/dots.svg";
 
