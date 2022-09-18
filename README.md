@@ -24,6 +24,6 @@ SocialRM has been an immense learning process for each of us, and we have a lot 
 
 ## What we learned
 
-Of course, we learned how to work with many new and fascinating technologies, but ultimately we learned that problem solving and overcoming obstacles as an experience better shared with a team.
+Of course, we learned much about and how to work with many new and fascinating technologies, but ultimately we learned that problem solving and overcoming obstacles is an experience better shared with a team. Collaboration and teamwork have been rare opportunities for the past few pandemic years, and we are so excited to be back.
 
 ## What's next for SocialRM
