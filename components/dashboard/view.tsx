@@ -88,18 +88,15 @@ const View: React.FC<Props> = ({
         ))}
         <div className="my-6 flex flex-col justify-start items-center w-3/4 sm:w-2/3 md:w-1/2 xl:w-1/4">
           {results.length > 0 ? (
-          <textarea
-            className="w-full min-h-[125px] max-h-[250px] resize-y rounded-md p-2 border-2 border-slate-300 focus:outline-none focus-visible:ring focus-visible:ring-violet-600 focus-visible:ring-opacity-75"
-            value={results[currentMessage]}
-          />
-          )
-          :
-          <div
-            className="w-full flex items-center justify-center text-violet-600 font-semibold h-[125px] rounded-md p-2 bg-purple-200/70 border-2 border-violet-400 animate-pulse cursor-progress"
-          > 
-            Loading...
-          </div>
-          }
+            <textarea
+              className="w-full min-h-[125px] max-h-[250px] resize-y rounded-md p-2 border-2 border-slate-300 focus:outline-none focus-visible:ring focus-visible:ring-violet-600 focus-visible:ring-opacity-75"
+              value={results[currentMessage]}
+            />
+          ) : (
+            <div className="w-full flex items-center justify-center text-violet-600 font-semibold h-[125px] rounded-md p-2 bg-purple-200/70 border-2 border-violet-400 animate-pulse cursor-progress">
+              Loading...
+            </div>
+          )}
           <div className="w-full justify-center space-x-4 flex items-center px-1 mt-3">
             {results.length > 0 ? (
               <>
@@ -136,7 +133,7 @@ const View: React.FC<Props> = ({
             )}
           </div>
         </div>
-        <div className="w-full flex justify-evenly items-center">
+        <div className="w-[300px] flex justify-around items-center">
           <button
             className="px-3 py-1 duration-200 bg-violet-600 rounded-lg hover:bg-violet-600/80 font-bold text-white text-center"
             onClick={() => {
