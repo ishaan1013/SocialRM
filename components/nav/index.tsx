@@ -7,6 +7,9 @@ import { useRouter } from "next/router";
 
 import { signOutFunc } from "../../pages/index";
 
+import Lines from "../../public/lines1.svg"
+import Image from "next/image";
+
 interface Props {
   user: any;
   auth: any;
@@ -27,6 +30,13 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
       </header>
       {isOpen && (
         <nav className="md:hidden h-screen w-screen fixed top-0 left-0 flex flex-col justify-start pt-24 px-6 bg-gradient-to-br from-violet-700 to-violet-500 z-50">
+          
+          <div className="absolute bottom-4 left-2">
+            <div className="relative w-96 h-96">
+              <Image src={Lines} />
+            </div>
+          </div>
+          
           <button
             className="absolute top-6 right-6"
             onClick={() => setIsOpen(false)}
@@ -38,10 +48,9 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
               onClick={() => {
                 router.pathname == "/" && setIsOpen(false);
               }}
-              className="cursor-pointer w-full p-2 duration-200 bg-transparent rounded-lg hover:bg-white/10 mb-4 font-semibold flex justify-between items-center text-white"
+              className={`cursor-pointer w-full p-2 duration-200 rounded-lg ${router.pathname == "/" ? "bg-white/10 hover:bg-white/20" : "bg-transparent hover:bg-white/10"} mb-4 font-semibold flex justify-between items-center text-white`}
             >
               <p>Dashboard</p>
-              {router.pathname == "/" && <FaChevronLeft size={20} />}
             </button>
           </Link>
           <Link href="/schedule">
@@ -49,10 +58,9 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
               onClick={() => {
                 router.pathname == "/schedule" && setIsOpen(false);
               }}
-              className="cursor-pointer w-full p-2 duration-200 bg-transparent rounded-lg hover:bg-white/10 mb-6 font-semibold flex justify-between items-center text-white"
+              className={`cursor-pointer w-full p-2 duration-200 ${router.pathname == "/schedule" ? "bg-white/10 hover:bg-white/20" : "bg-transparent hover:bg-white/10"} rounded-lg mb-6 font-semibold flex justify-between items-center text-white`}
             >
               Schedule
-              {router.pathname == "/schedule" && <FaChevronLeft size={20} />}
             </button>
           </Link>
           <div className="flex items-center w-full px-2">
@@ -77,6 +85,13 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
 
       {/* computer size below */}
       <nav className="hidden md:flex h-screen w-80 fixed top-0 left-0 flex-col justify-start pt-24 px-6 bg-gradient-to-br from-violet-700 to-violet-500 z-50">
+        
+        <div className="absolute -bottom-8 left-4 opacity-30">
+          <div className="relative w-48 h-48">
+            <Image src={Lines} layout="fill" />
+          </div>
+        </div>
+        
         <h1 className="absolute top-7 left-6 font-bold text-[1.35rem]  text-white">
           SocialRM
         </h1>
@@ -86,10 +101,9 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
             onClick={() => {
               router.pathname == "/" && setIsOpen(false);
             }}
-            className="cursor-pointer w-full p-2 duration-200 bg-transparent rounded-lg hover:bg-white/10 mb-4 font-semibold flex justify-between items-center text-white"
-          >
+            className={`cursor-pointer w-full p-2 duration-200 rounded-lg ${router.pathname == "/" ? "bg-white/10 hover:bg-white/20" : "bg-transparent hover:bg-white/10"} mb-4 font-semibold flex justify-between items-center text-white`}
+            >
             <p>Dashboard</p>
-            {router.pathname == "/" && <FaChevronLeft size={20} />}
           </button>
         </Link>
         <Link href="/schedule">
@@ -97,10 +111,9 @@ const Nav: React.FC<Props> = ({ user, auth }) => {
             onClick={() => {
               router.pathname == "/schedule" && setIsOpen(false);
             }}
-            className="cursor-pointer w-full p-2 duration-200 bg-transparent rounded-lg hover:bg-white/10 mb-6 font-semibold flex justify-between items-center text-white"
-          >
+            className={`cursor-pointer w-full p-2 duration-200 ${router.pathname == "/schedule" ? "bg-white/10 hover:bg-white/20" : "bg-transparent hover:bg-white/10"} rounded-lg mb-6 font-semibold flex justify-between items-center text-white`}
+            >
             Schedule
-            {router.pathname == "/schedule" && <FaChevronLeft size={20} />}
           </button>
         </Link>
 

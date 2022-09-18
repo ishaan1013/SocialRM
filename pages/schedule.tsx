@@ -62,16 +62,17 @@ const Schedule: NextPage = () => {
       <Nav user={user} auth={auth} />
       <main className="p-6 flex flex-col justify-start items-center md:pl-[22rem] sm:pt-8 md:pt-12">
         <h1 className="w-full text-center mb-6 text-lg font-bold text-slate-700">
-          Upcoming Connections 🤝
+          Upcoming Connections 📨
         </h1>
 
         {
           contacts ? 
           contacts.map((contact: any, i:number) => (
-            <div key={i} className="mb-4 flex w-full justify-between items-center rounded-lg bg-violet-100 px-4 py-3 text-base font-medium text-slate-700 hover:bg-violet-200">
+            <div key={i} className="duration-200 border-2 border-transparent hover:border-violet-300 mb-4 flex w-full justify-between items-center rounded-lg bg-violet-100 px-4 py-3 text-base font-medium text-slate-700">
               <div>
                 <p className="font-bold text-base text-slate-600">{contact.name}</p>
-                <p className="font-medium text-[0.72rem] text-slate-500 -mb-1">{(contact.email.length > 16) ? contact.email.slice(0, 16-1) + '...' : contact.email}</p>
+                <p className="font-medium text-[0.72rem] text-slate-500 -mb-1 sm:hidden">{(contact.email.length > 16) ? contact.email.slice(0, 16-1) + '...' : contact.email}</p>
+                <p className="font-medium text-[0.72rem] text-slate-500 -mb-1 hidden sm:block">{contact.email}</p>
                 <p className="font-medium text-[0.72rem] text-slate-500">{contact.circle}</p>
               </div>
               <div>
