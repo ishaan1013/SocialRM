@@ -1,5 +1,7 @@
 # <span style="color:#5b21b6">**SocialRM**</span>
 
+![Mobile and laptop mockup of our home screen](https://raw.githubusercontent.com/ishaan1013/socialrm/main/public/socialrm1.jpg)
+
 ## <span style="color:#8b5cf6">Inspiration 💭</span>
 
 Especially after the COVID pandemic, we have come to realize the importance of staying connected. We all experienced distancing relationships to some extent, and sometimes...it doesn't feel great. We were inspired to build a tool to not only help us maintain, but _value and cherish relationships with those we care about_.
@@ -11,8 +13,6 @@ Especially after the COVID pandemic, we have come to realize the importance of s
 ## <span style="color:#8b5cf6">How we built it ⚒️</span>
 
 We built **SocialRM** as a web app using Next.js, Firestore and Firebase Auth. Our UI was carefully crafted in Figma and then brought to life using Tailwind CSS. Our generation AI is powered by Cohere's natural language processing APIs, enabling **SocialRM** to produce realistic yet customizable chat phrases. Finally, we send your amazing messages with Flask, Python, and google's Gmail API. Through streamlined OAuth2, the entire process is _unbelievably quick and easy_.
-
-![Mobile and laptop mockup of our home screen](https://raw.githubusercontent.com/ishaan1013/socialrm/main/public/socialrm1.jpg)
 
 ## <span style="color:#8b5cf6">Challenges and obstacles 🚧</span>
 
