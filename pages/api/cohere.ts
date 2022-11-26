@@ -1,9 +1,7 @@
-const COHERE_APIKEY = "RpBAWJkgiugEpfLZzEbVOUnB0XJXAkc71B8DbGui";
-
 const cohere = require("cohere-ai");
-cohere.init(COHERE_APIKEY, "2021-11-08");
+cohere.init(process.env.COHERE_APIKEY, "2021-11-08");
 
-cohere.init(COHERE_APIKEY);
+cohere.init(process.env.COHERE_APIKEY);
 
 const coGenerate = async (
   username: string,
